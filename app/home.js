@@ -4,8 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
 import { useEffect } from 'react';
+import { Link } from 'expo-router';
 
 WebBrowser.maybeCompleteAuthSession();
+
+function cadastro(){
+  <Link href={'/cadastro'}></Link>
+}
 
 function App() {
   const [request, response, promptAsync] = Google.useAuthRequest({
@@ -43,7 +48,7 @@ function App() {
       {/* Botões */}
       <View style={styles.buttonConjunt}>
         <TouchableOpacity style={styles.buttonGoogle} onPress={() => promptAsync()}>
-          <Image source={require('./assets/google-icon.png')} style={[styles.googleIcon,{marginRight: 40}]} />
+          <Image source={require('../assets/google-icon.png')} style={[styles.googleIcon,{marginRight: 40}]} />
           <Text style={styles.textButtonGoogle}>Login com o Google</Text>
         </TouchableOpacity>
 
@@ -67,7 +72,9 @@ function App() {
           </TouchableOpacity>
 
           <TouchableOpacity style={{ marginTop: 20 }}>
-            <Text style={styles.textButtonRestauPass}>Cadastre-se!</Text>
+            <Link href={'/cadastro'}>
+              <Text style={styles.textButtonRestauPass}>Cadastre-se!</Text>
+            </Link>
           </TouchableOpacity>
         </View>
       </View>
