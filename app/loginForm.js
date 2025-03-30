@@ -22,7 +22,8 @@ const LoginForm = ({
   showSeparator,
   showSenha,
   showCadastro,
-  buttonText = "ENTRAR"
+  buttonText = "ENTRAR",
+  showAviso
 }) => {
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId:
@@ -101,6 +102,9 @@ const LoginForm = ({
                 </Text>
               </Link>
             </TouchableOpacity>
+
+            
+
           )}
           {showCadastro && (
             <TouchableOpacity style={{ marginTop: 20, alignItems: "center" }}>
@@ -110,6 +114,11 @@ const LoginForm = ({
             </TouchableOpacity>
           )}
 
+          {showAviso && (
+         <View style={styles.textAviso}>
+          <Text style={styles.avisoRedefinir}>* Você receberá um email para redefinir sua senha. Verifique também sua caixa de Spam e Lixeira.</Text>
+         </View>
+         )}
          
         </View>        
       </View>
@@ -125,6 +134,7 @@ export function Login() {
       showSeparator={true}
       showSenha={true} // Adicionando um botão para esqueci minha senha
       showCadastro={true} // Adicionando um botão para cadastrar-se
+      showAviso={false}
     />
   );
 }
@@ -136,9 +146,23 @@ export default function Cadastro() {
       showSeparator={false}
       showSenha={false}
       showCadastro={false}
+      showAviso={false}
       buttonText="CADASTRE-SE"
     />
   );
+}
+export function Redefinir() {
+  return (
+    <LoginForm
+      inputFields={["E-mail"]}
+      showGoogleButton={false}
+      showSeparator={false}
+      showSenha={false}
+      showCadastro={false}
+      showAviso={true}
+      buttonText="ENVIAR"
+    />
+  )
 }
 
 const styles = StyleSheet.create({
@@ -207,7 +231,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   textButtonEnter: {
-    color: "black",
+    color: "#000000", //mudar para hexadecimal
     fontSize: 16,
     fontWeight: "bold",
     textAlign: "center",
@@ -247,5 +271,21 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     flexDirection: "row",
     position: "relative",
+  },
+  textAviso: {
+    flex: 1, // Ocupa toda a tela
+    justifyContent: "center", // Centraliza verticalmente
+    alignItems: "center", // Centraliza horizontalmente
+    paddingHorizontal: 20, // Adiciona um espaço para evitar que o texto encoste nas bordas
+  },
+  avisoRedefinir: {
+    color: "#f7f7f7",
+    fontSize: 15,
+    textAlign: "center",
+    justifyContent: "center",
+    width: "100%",
+    textAlign: "center",
+    paddingVertical: 5,
+
   },
 });
