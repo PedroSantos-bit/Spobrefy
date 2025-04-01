@@ -6,13 +6,12 @@ import * as WebBrowser from 'expo-web-browser';
 import { useEffect } from 'react';
 import { Link } from 'expo-router';
 
+
 WebBrowser.maybeCompleteAuthSession();
 
-function cadastro(){
-  <Link href={'/cadastro'}></Link>
-}
-
 function App() {
+
+ 
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: '862395055773-lboub4kqa74ashkmi2tjnioi43d5n58b.apps.googleusercontent.com',
     redirectUri: 'https://auth.expo.io/@pedro223/appmusica' 
@@ -28,21 +27,22 @@ function App() {
   
   return (
     <LinearGradient
-      colors={["#000114", "#00032b", "#010970", "#040fd4"]}
+      colors={["black", "#00032b", "#010970", "#040fd4"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={styles.container}
     >
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
 
       {/* Conteúdo */}
       <View style={styles.content}>
         {/* Imagem e título fixos */}
         <Image
-          source={{ uri: "https://wallpaper.forfun.com/fetch/45/456d3f45110310782fe45fc272b2835f.jpeg" }}
+          source={require('../assets/spotify-fill-logo.256x256.png')}
           style={styles.imageTitle}
         />
-        <Text style={styles.titleApp}>Spobrefy</Text>
+
+        <Text style={styles.titleApp}>Spobre-fy°</Text>
       </View>
 
       {/* Botões */}
@@ -68,7 +68,9 @@ function App() {
         {/* Links adicionais */}
         <View style={{ marginTop: 40 }}>
           <TouchableOpacity>
-            <Text style={styles.textButtonRestauPass}>Esqueci minha senha.</Text>
+            <Link href={'/redefinir'}>
+              <Text style={styles.textButtonRestauPass}>Esqueci minha senha.</Text>
+            </Link>
           </TouchableOpacity>
 
           <TouchableOpacity style={{ marginTop: 20 }}>
@@ -97,13 +99,14 @@ const styles = StyleSheet.create({
     marginBottom: 30, // Controla o espaço entre a imagem e os botões
   },
   imageTitle: {
-    width: 130,
-    height: 130,
+    width: 150,
+    height: 150,
     marginBottom: 30,
+    tintColor: '#040fd4'
   },
   titleApp: {
     color: "#05d8f0",
-    fontSize: 32,
+    fontSize: 38,
     fontWeight: "bold",
   },
   buttonConjunt: {
