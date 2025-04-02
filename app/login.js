@@ -9,9 +9,7 @@ import { Link } from 'expo-router';
 
 WebBrowser.maybeCompleteAuthSession();
 
-function App() {
-
- 
+function App() { 
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: '862395055773-lboub4kqa74ashkmi2tjnioi43d5n58b.apps.googleusercontent.com',
     redirectUri: 'https://auth.expo.io/@pedro223/appmusica' 
@@ -27,12 +25,12 @@ function App() {
   
   return (
     <LinearGradient
-      colors={["black", "#00032b", "#010970", "#040fd4"]}
+      colors={["black", "#042F60"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={styles.container}
     >
-      <StatusBar style="dark" />
+      <StatusBar style="light" backgroundColor="black" />
 
       {/* Conteúdo */}
       <View style={styles.content}>
@@ -61,14 +59,14 @@ function App() {
         </TouchableOpacity>
 
         {/* Botão Entrar */}
-        <TouchableOpacity style={[styles.buttonGoogleEnter, { backgroundColor: "#05d8f0" }]}>
+        <TouchableOpacity style={[styles.buttonGoogleEnter, { backgroundColor: "#18CDE2" }]}>
           <Text style={styles.textButtonEnter}>ENTRAR</Text>
         </TouchableOpacity>
 
         {/* Links adicionais */}
         <View style={{ marginTop: 40 }}>
           <TouchableOpacity>
-            <Link href={'/redefinir'}>
+            <Link href={'/redefina'}>
               <Text style={styles.textButtonRestauPass}>Esqueci minha senha.</Text>
             </Link>
           </TouchableOpacity>
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
     tintColor: '#040fd4'
   },
   titleApp: {
-    color: "#05d8f0",
+    color: "#18CDE2",
     fontSize: 38,
     fontWeight: "bold",
   },

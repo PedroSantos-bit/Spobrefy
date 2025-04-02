@@ -11,7 +11,7 @@ export default function Cadastro() {
           end={{ x: 0, y: 1 }}
           style={styles.container}
         >
-          <StatusBar style="dark" />
+          <StatusBar style="light" backgroundColor="black" />
     
           {/* Conteúdo */}
           <View style={styles.content}>
@@ -38,12 +38,13 @@ export default function Cadastro() {
             <TouchableOpacity style={[styles.buttonGoogleEnter, { backgroundColor: "#05d8f0" }]}>
               <Text style={styles.textButtonEnter}>CADASTRE-SE</Text>
             </TouchableOpacity>
-    
+            </View>
+
+
             {/* Footer Página Cadastro*/}
             <View style={styles.footer}>
               <Text style={styles.footerText}>@Todos os direitos reservados.</Text>
             </View>
-          </View>
         </LinearGradient>
       );
     }
@@ -129,17 +130,17 @@ export default function Cadastro() {
       },
       footer: {
         position: 'absolute', // Mantém fixo no rodapé
-        bottom: "-70%", // Coloca no final da tela
+        bottom: 0, // Sempre no final da tela
         width: '100%', // Ocupa toda a largura
         padding: 13,
         alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Opcional: melhora a visibilidade
       },
       footerText: {
         fontSize: 14,
         color: 'white',
       },
-    });
-
+    });      
 
 
 
