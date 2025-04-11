@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Alert, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
@@ -24,23 +24,26 @@ function App() {
   }, [response]);
   
   return (
+
+    <ImageBackground source={require('../assets/Bob-Marley-biografia.jpg')} resizeMode="cover" style={{flex:1}}>
+
     <LinearGradient
-      colors={["black", "#042F60"]}
+      colors={['#2f4f4f' , '#2e8b57', '#3cb371','#3cb371', '#2f4f4f']}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       style={styles.container}
     >
-      <StatusBar style="light" backgroundColor="black" />
+      <StatusBar style="light" backgroundColor="#2f4f4f" />
 
       {/* Conteúdo */}
       <View style={styles.content}>
         {/* Imagem e título fixos */}
         <Image
-          source={require('../assets/spotify-fill-logo.256x256.png')}
+          source={require('../assets/IconeApp.png')}
           style={styles.imageTitle}
         />
 
-        <Text style={styles.titleApp}>Spobre-fy°</Text>
+        <Text style={styles.titleApp}>Soft</Text>
       </View>
 
       {/* Botões */}
@@ -51,34 +54,35 @@ function App() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonGoogle}>
-          <Text style={styles.textButtonUser}>Email ou nome de usuário</Text>
+          <Text style={styles.textButtonUser}>E-mail ou nome de usuário</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonGoogle}>
-          <Text style={styles.textButtonPassword}>Senha</Text>
+          <Text style={[styles.textButtonPassword, {opacity: 1}]}>Senha</Text>
         </TouchableOpacity>
 
         {/* Botão Entrar */}
-        <TouchableOpacity style={[styles.buttonGoogleEnter, { backgroundColor: "#18CDE2" }]}>
+        <TouchableOpacity style={styles.buttonGoogleEnter}>
           <Text style={styles.textButtonEnter}>ENTRAR</Text>
         </TouchableOpacity>
 
         {/* Links adicionais */}
         <View style={{ marginTop: 40 }}>
           <TouchableOpacity>
-            <Link href={'/redefina'}>
-              <Text style={styles.textButtonRestauPass}>Esqueci minha senha.</Text>
+            <Link href={'/redefina'} style={{ borderBottomWidth: 0.8, borderBottomColor: 'white', alignSelf: 'center' }}>
+              <Text style={[styles.textButtonRestauPass]}>Esqueceu sua senha?</Text>
             </Link>
           </TouchableOpacity>
 
           <TouchableOpacity style={{ marginTop: 20 }}>
             <Link href={'/cadastro'}>
-              <Text style={styles.textButtonRestauPass}>Cadastre-se!</Text>
+              <Text style={styles.textButtonRestauPass}>Não tem uma conta? C͟a͟d͟a͟s͟t͟r͟e͟-s͟e͟</Text>
             </Link>
           </TouchableOpacity>
         </View>
       </View>
     </LinearGradient>
+    </ImageBackground>
   );
 }
 
@@ -87,7 +91,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -100,10 +103,9 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     marginBottom: 30,
-    tintColor: '#040fd4'
   },
   titleApp: {
-    color: "#18CDE2",
+    color: 'white',
     fontSize: 38,
     fontWeight: "bold",
   },
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   buttonGoogle: {
     flexDirection: "row",
     alignItems: 'center',    
-    backgroundColor: '#262a85',
+    backgroundColor: 'rgba(0,0,0,0.4)',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 20,
@@ -123,13 +125,14 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonGoogleEnter: {
-    backgroundColor: '#262a85',
+    backgroundColor:'rgba(0,0,0,0.7)',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 20,
     width: "80%",
     textAlign: 'center',
     marginTop: 20,
+    
   },
   textButtonGoogle: {
     color: '#fff',
@@ -147,16 +150,16 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   textButtonEnter: {
-    color: 'black',
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   textButtonRestauPass: {
-    color: "#05d8f0",
+    color: 'white',
     marginTop: 10,
     textAlign: 'center', 
-    fontSize: 16
+    fontSize: 16,
   },
   googleIcon:{
     width: 24,

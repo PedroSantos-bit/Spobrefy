@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Alert, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Alert, TouchableOpacity, Image, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 
@@ -6,33 +6,33 @@ import { StatusBar } from 'expo-status-bar';
 export default function Cadastro() {
   return (
     <LinearGradient
-          colors={["black", "#00032b", "#010970", "#040fd4"]}
+          colors={['#2f4f4f' , '#2e8b57', '#3cb371','#3cb371', '#2f4f4f']}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={styles.container}
         >
-          <StatusBar style="light" backgroundColor="black" />
+          <StatusBar style="light" backgroundColor="#2f4f4f" />
     
           {/* Conteúdo */}
           <View style={styles.content}>
             {/* Imagem e título fixos */}
             {/* Teria uma imagem ao invés deste comentario */}
-            <Text style={styles.titleApp}>REDEFINIÇÃO DE SENHA</Text>
+            <Text style={styles.titleApp}>Redefina sua senha</Text>
           </View>
     
           {/* Botões */}
           <View style={styles.buttonConjunt}>
             <TouchableOpacity style={styles.buttonGoogle}>
-              <Text style={styles.textButtonGoogle}>Nova Senha</Text>
+                <Text style={styles.textButtonGoogle}>Nova Senha</Text>
             </TouchableOpacity>
     
             <TouchableOpacity style={styles.buttonGoogle}>
-              <Text style={styles.textButtonUser}>Confirme sua Nova Senha</Text>
+              <Text style={styles.textButtonUser}>Confirmar Nova Senha</Text>
             </TouchableOpacity>
     
             {/* Botão Entrar */}
-            <TouchableOpacity style={[styles.buttonGoogleEnter, { backgroundColor: "#05d8f0" }]}>
-              <Text style={styles.textButtonEnter}>ENVIAR</Text>
+            <TouchableOpacity style={styles.buttonGoogleEnter}>
+              <Text style={styles.textButtonEnter}>ALTERAR SENHA</Text>
             </TouchableOpacity>
             </View>
     
@@ -62,7 +62,7 @@ export default function Cadastro() {
         marginBottom: 30,
       },
       titleApp: {
-        color: "#05d8f0",
+        color: 'white',
         fontSize: 30,
         fontWeight: "bold",
         top: -70
@@ -81,13 +81,14 @@ export default function Cadastro() {
         width: "80%",
         textAlign: 'center',
         margin: 10,
+        backgroundColor: 'rgba(0,0,0,0.4)'
       },
       buttonGoogleEnter: {
-        backgroundColor: '#262a85',
+        backgroundColor: 'rgba(0,0,0,0.7)',
         paddingVertical: 12,
         paddingHorizontal: 24,
         borderRadius: 20,
-        width: "80%",
+        width: "50%",
         textAlign: 'center',
         marginTop: 20,
       },
@@ -107,7 +108,7 @@ export default function Cadastro() {
         textAlign: 'left',
       },
       textButtonEnter: {
-        color: 'black',
+        color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
