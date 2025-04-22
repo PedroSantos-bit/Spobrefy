@@ -25,8 +25,6 @@ function App() {
   
   return (
 
-    <ImageBackground source={require('../assets/Bob-Marley-biografia.jpg')} resizeMode="cover" style={{flex:1}}>
-
     <LinearGradient
       colors={['#2f4f4f' , '#2e8b57', '#3cb371','#3cb371', '#2f4f4f']}
       start={{ x: 0, y: 0 }}
@@ -63,7 +61,9 @@ function App() {
 
         {/* Botão Entrar */}
         <TouchableOpacity style={styles.buttonGoogleEnter}>
-          <Text style={styles.textButtonEnter}>ENTRAR</Text>
+          <Link href={'/home'}>
+            <Text style={styles.textButtonEnter}>ENTRAR</Text>
+          </Link>
         </TouchableOpacity>
 
         {/* Links adicionais */}
@@ -82,7 +82,6 @@ function App() {
         </View>
       </View>
     </LinearGradient>
-    </ImageBackground>
   );
 }
 

@@ -11,7 +11,7 @@ export default function Cadastro() {
           end={{ x: 0, y: 1 }}
           style={styles.container}
         >
-          <StatusBar style="light" backgroundColor="#2f4f4f" />
+          <StatusBar style="light" backgroundColor="#2f4f4f"/>
     
           {/* Conteúdo */}
           <View style={styles.content}>
