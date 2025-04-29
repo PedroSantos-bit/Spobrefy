@@ -21,6 +21,7 @@ const ScreenMain = ({
   showProgresso = true, // padrão é mostrar o progresso
   showBorder = true, // padrão é mostrar a borda
   showTitle = true, // padrão é mostrar o título
+  showAvatar = true // padrão é mostrar o Avatar
 }) => {
   // Função para formatar o tempo de milissegundos para mm:ss
   const formatTime = (millis) => {
@@ -33,13 +34,15 @@ const ScreenMain = ({
     // View externa que ocupa a tela inteira
     <View style={{ flex: 1 }}>
       <LinearGradient
-        colors={["#F7F7F7", "#F7F7F7", "#F7F7F7", "#00032b"]}
+        colors={[ '#2f4f4f' , '#2e8b57', '#3cb371','#3cb371', '#2f4f4f' ]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
         {/* Avatar */}
+        {showAvatar && avatar && (
         <Image style={styles.imageAvatar} source={avatar} />
+        )}
 
         {/* Título principal */}
         {showTitle && (
@@ -47,15 +50,15 @@ const ScreenMain = ({
         )}
 
         {/* Capa do álbum */}
-        {showBorder && (
+        {showBorder && albumImage && (
           <View style={styles.albumCover}>
             <Image style={styles.albumImage} source={albumImage} />
           </View>
         )}
 
         {/* Título e subtítulo da música */}
-        <Text style={styles.songTitle}>{title}</Text>
-        <Text style={styles.albumTitle}>{subtitle}</Text>
+        {title && <Text style={styles.songTitle}>{title}</Text>}
+        {subtitle && <Text style={styles.albumTitle}>{subtitle}</Text>}
 
         {/* Barra de progresso da música */}
         {showProgresso && (
@@ -94,23 +97,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, // Ocupar espaço restante da tela
     paddingTop: 45,
-    alignItems: "center",
+    //alignItems: "center",
   },
   imageAvatar: {
     width: 65,
     height: 65,
     borderRadius: 25,
+    alignSelf: "center",
+    //textAlign: "center",
   },
   textHome: {
     fontSize: 25,
     fontWeight: "bold",
     marginBottom: 20,
+    //alignItems: "center",
+    textAlign: "center",
   },
   albumCover: {
     backgroundColor: "#ccc",
     padding: 10,
     borderRadius: 10,
     marginBottom: 20,
+    alignItems: "center",
+    alignSelf: "center",
   },
   albumImage: {
     width: 200,
@@ -120,17 +129,21 @@ const styles = StyleSheet.create({
   songTitle: {
     fontSize: 20,
     fontWeight: "bold",
+    textAlign: "center",
+    
   },
   albumTitle: {
     fontSize: 18,
     color: "#555",
     marginTop: 10,
+    textAlign: "center",
   },
   progressBarContainer: {
     width: "80%",
     height: 20,
     marginBottom: 20,
     marginTop: 15,
+    alignSelf: "center",
   },
   progressBar: {
     height: 4,
@@ -148,6 +161,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 20,
     marginTop: -35,
+    alignSelf: "center",
   },
 });
 

@@ -9,17 +9,17 @@ const BottomNavigation = () => {
   return (
     <View style={styles.navbar}>
       {/* O prop asChild faz o <Link> usar o TouchableOpacity como base, sem quebrar layout nem acessibilidade */}
-      <Link href="/LibraryScreen" asChild>
+      <Link href="/HomeScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Feather
             name="music"
             size={24}
-            color={pathname === "/LibraryScreen" ? "#00E0D6" : "#F7F7F7"}
+            color={pathname === "/HomeScreen" ? "#00E0D6" : "#F7F7F7"}
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/LibraryScreen" && { color: "#F7F7F7" },
+              pathname === "/HomeScreen" && { color: "#F7F7F7" },
             ]}
           >
             home
@@ -27,17 +27,17 @@ const BottomNavigation = () => {
         </TouchableOpacity>
       </Link>
 
-      <Link href="/search" asChild>
+      <Link href="/LibraryScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Feather
             name="search"
             size={24}
-            color={pathname === "/search" ? "#00E0D6" : "#F7F7F7"}
+            color={pathname === "/LibraryScreen" ? "#00E0D6" : "#F7F7F7"}
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/search" && { color: "#F7F7F7" },
+              pathname === "/LibraryScreen" && { color: "#F7F7F7" },
             ]}
           >
             search
@@ -63,17 +63,17 @@ const BottomNavigation = () => {
         </TouchableOpacity>
       </Link>
 
-      <Link href="/profile" asChild>
+      <Link href="/ProfileScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Feather
             name="user"
             size={24}
-            color={pathname === "/profile" ? "#00E0D6" : "#F7F7F7"}
+            color={pathname === "/ProfileScreen" ? "#00E0D6" : "#F7F7F7"}
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/profile" && { color: "#F7F7F7" },
+              pathname === "/ProfileScreen" && { color: "#F7F7F7" },
             ]}
           >
             profile

@@ -1,8 +1,15 @@
 import React from "react";
-import { StyleSheet, View, TextInput, FlatList, Image, TouchableOpacity, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import ScreenMain from "./src/components/ScreenMain";
 import Icon from "react-native-vector-icons/Ionicons";
-
 
 const recentSearches = [
   {
@@ -31,7 +38,6 @@ const recentSearches = [
   },
 ];
 
-
 export default function FavoriteScreen() {
   return (
     <ScreenMain
@@ -59,46 +65,38 @@ export default function FavoriteScreen() {
           />
         </View>
 
-
-
         <FlatList
-                  data={recentSearches}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => (
-                    <View style={styles.itemRow}>
-                      <Image source={item.icon} style={styles.icon} />
-                      <View style={styles.textContainer}>
-                        <Text style={styles.itemTitle}>{item.title}</Text>
-                        <Text style={styles.itemType}>{item.type}</Text>
-                      </View>
-                      {/* button do X */}
-                      <TouchableOpacity>
-                        <Icon name="heart" style={styles.buttonX} />
-                      </TouchableOpacity>
-                    </View>
-                  )}
-                />
+          data={recentSearches}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.itemRow}>
+              <Image source={item.icon} style={styles.icon} />
+              <View style={styles.textContainer}>
+                <Text style={styles.itemTitle}>{item.title}</Text>
+                <Text style={styles.itemType}>{item.type}</Text>
+              </View>
+              {/* button do X */}
+              <TouchableOpacity>
+                <Icon name="heart" style={styles.buttonX} />
+              </TouchableOpacity>
+            </View>
+          )}
+        />
 
-
-                {/* Mini player fixo */}
-                        <View style={styles.miniPlayer}>
-                          <Image
-                            source={require("../assets/favicon.png")}
-                            style={styles.playerImage}
-                          />
-                          <View>
-                            <Text style={styles.playerTitle}>Inside Out</Text>
-                            <Text style={styles.playerSubtitle}>The Chainsmokers, Charlee</Text>
-                          </View>
-                          <TouchableOpacity style={styles.playButton}>
-                            <Icon name="play" size={22} color="#fff" />
-                          </TouchableOpacity>
-                        </View>
-
-
-
-
-
+        {/* Mini player fixo */}
+        <View style={styles.miniPlayer}>
+          <Image
+            source={require("../assets/favicon.png")}
+            style={styles.playerImage}
+          />
+          <View>
+            <Text style={styles.playerTitle}>Inside Out</Text>
+            <Text style={styles.playerSubtitle}>The Chainsmokers, Charlee</Text>
+          </View>
+          <TouchableOpacity style={styles.playButton}>
+            <Icon name="play" size={22} color="#fff" />
+          </TouchableOpacity>
+        </View>
       </View>
     </ScreenMain>
   );
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 0,
-    marginTop: "-40%",
+    marginTop: 10,
     marginBottom: 30,
   },
   inputText: {

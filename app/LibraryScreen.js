@@ -70,8 +70,8 @@ export default function LibraryScreen() {
 
         {/* Título */}
         <Text style={styles.sectionTitle}>Buscas recentes</Text>
-
-        <FlatList
+        <View style={{ flex: 1, width: "100%" }}>
+        <FlatList style={styles.scrum}
           data={recentSearches}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
@@ -88,7 +88,7 @@ export default function LibraryScreen() {
             </View>
           )}
         />
-
+        </View>
         {/* Botão limpar */}
         <TouchableOpacity style={styles.clearButton}>
           <Text style={styles.clearButtonText}>Limpar buscas recentes</Text>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 0,
-    marginTop: "-40%",
+    marginTop: 10,
   },
   input: {
     color: "#F7F7F7",
@@ -150,6 +150,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignSelf: "flex-start",
     marginLeft: 10,
+  },
+  scrum: {
+    //backgroundColor: "white",
+    width: "100%", // caso preciso regular a rolagem
+    flexGrow: 1,
+    
   },
   itemRow: {
     flexDirection: "row",
@@ -190,6 +196,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 14,
     marginVertical: 85,
+    marginTop: 10,
+    
   },
   clearButtonText: {
     color: "#fff",
