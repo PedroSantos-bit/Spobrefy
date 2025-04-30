@@ -10,9 +10,9 @@ Este projeto foi desenvolvido por:
 
 - Pedro Lucas
 - Luiz
-- Erika
+- Camila
 - Vitor
-- Jonathan
+- Jonathan R. Germano 
 - Henrique
 
 ---
@@ -41,7 +41,7 @@ Este projeto foi desenvolvido por:
 
 ## 📂 Estrutura do Projeto
 
-.
+```bash
 ├── android/            # Arquivos Android nativos
 ├── app/                # Código-fonte principal do app
 ├── assets/             # Imagens, fontes, etc.
@@ -49,8 +49,7 @@ Este projeto foi desenvolvido por:
 ├── app.json            # Configurações do projeto Expo
 ├── package.json        # Dependências e scripts
 └── README.md           # Este arquivo  
-
-
+```
 ---
 
 ## ⚙️ Como Rodar o Projeto
@@ -62,29 +61,58 @@ Este projeto foi desenvolvido por:
   ```bash
   npm install -g expo-cli
 
-Passo a passo
+# Passo a passo
 
-1. Clone o repositório:
-
+# 1. Clone o repositório:
+```Bash
 git clone https://github.com/seu-usuario/spobrefy.git
 cd spobrefy
-
-2. Instale as dependências:
-
+```
+# 2. Instale as dependências:
+```Bash
 yarn
 # ou
 npm install
+```
 
-3. Inicie o projeto:
-
+# 3. Inicie o projeto:
+```Bash
 npx expo start
-
-4. Abra no celular:
-
+```
+# 4. Abra no celular:
+```Bash
 Baixe o app Expo Go na Play Store/App Store
 
 Escaneie o QR code que aparece no terminal ou navegador
+```
 
-📄 Licença
-Este projeto é acadêmico e não possui fins comerciais.
-Uso livre para fins de aprendizado e demonstração.
+
+
+
+
+## 📄 Licença
+Este projeto é licenciado sob os termos da Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+
+Você é livre para:
+
+✅ Compartilhar — copiar e redistribuir o material em qualquer meio ou formato
+
+✅ Adaptar — remixar, transformar e construir sobre o material
+
+Sob as seguintes condições:
+
+🧞 Atribuição — Você deve dar crédito apropriado, fornecer um link para a licença e indicar se foram feitas alterações. Isso pode ser feito de maneira razoável, mas sem sugerir que os autores endossam você ou o seu uso.
+
+💰 Não Comercial — Você não pode usar o material para fins comerciais.
+
+📌 Observações Adicionais
+
+Este projeto foi criado apenas para fins educacionais e acadêmicos.
+
+Os nomes, marcas, logos e áudios usados como exemplo pertencem a seus respectivos detentores de direitos.
+
+Este projeto não tem nenhuma afiliação oficial com o Spotify ou qualquer serviço de streaming de música.
+
+🔗 Leia a licença completa aqui (CC BY-NC 4.0)
+
+🎷 Feito com dedicação por uma equipe apaixonada por música e tecnologia.

@@ -5,11 +5,22 @@ import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
 import { useEffect } from 'react';
 import { Link } from 'expo-router';
+import { auth } from '../firebase/public/firebase';
 
 
 WebBrowser.maybeCompleteAuthSession();
 
 function LoginScreen() { 
+  useEffect(() => {
+    if (auth) {
+      console.log("✅ Firebase conectado com sucesso!");
+    } else {
+      console.log("❌ Erro ao conectar com Firebase");
+    }
+  }, []);
+
+
+
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: '862395055773-lboub4kqa74ashkmi2tjnioi43d5n58b.apps.googleusercontent.com',
     redirectUri: 'https://auth.expo.io/@pedro223/appmusica' 
