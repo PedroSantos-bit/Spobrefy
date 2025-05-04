@@ -1,4 +1,4 @@
-/*import { Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -7,7 +7,7 @@ const AlbumCard = ({ title, image }) => (
     <View style={styles.container} >
         <Image source={{ uri: image }} style={styles.image}  />
         <TouchableOpacity style={styles.playButton}>
-            <Ionicons name="play" size={20} color="#FFFFFF" />
+            <Ionicons name="play" size={20} color="black" />
         </TouchableOpacity>
         <Text style={styles.title}> {title} </Text>
     </View>
@@ -22,8 +22,22 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: 120, 
-        border
+        borderRadius: 8,
     },
-    playButton: {},
-    title: {},
-});*/
+    playButton: {
+        position: 'absolute',
+        top: 75,
+        //left: 45,
+        right: 180 / 2 - 10,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        padding: 5,
+        
+    },
+    title: {
+        color: '#FFFFFF',
+        marginTop: 6,
+    },
+});
+
+export default AlbumCard;

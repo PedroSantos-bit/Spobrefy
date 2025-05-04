@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   editIcon: {
     position: "absolute",
     bottom: 0,
-    right: 240 / 2 - 10,
+    right: 240 / 2 - 10, //controla a posição da camera 
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
     padding: 5,

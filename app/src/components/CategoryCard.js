@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { ImageBackground, StyleSheet, Text } from "react-native";
 
 const CategoryCard = ({ title, image }) => (
@@ -13,15 +13,19 @@ const CategoryCard = ({ title, image }) => (
 
 const styles = StyleSheet.create({
     card: {
-        width: 160,
-        height: 80,
+        width: 150,
+        height: 95,
         justifyContent: 'center',
-        paddingLeft: 10,
-        margin: 8,
+        alignItems: 'center',
+        margin: 10,
+        backgroundColor: "black", //testando 
+        borderRadius: 20,
     },
     text: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',
     }
-});*/
+});
+
+export default CategoryCard;

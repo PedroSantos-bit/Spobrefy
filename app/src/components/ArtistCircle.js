@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 
@@ -12,7 +12,8 @@ const ArtistCircle = ({ name, image }) => (
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        marginHorizontal: 8,
+        marginHorizontal: 20,
+        
     },
     image: {
         width: 60,
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 2,
         borderColor: '#FFFFFF',
+        
     },
     name: {
         marginTop: 4,
@@ -32,5 +34,3 @@ const styles = StyleSheet.create({
 export default ArtistCircle;
 
 
-
-*/

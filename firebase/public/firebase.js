@@ -1,5 +1,5 @@
 // firebase/firebase.js
-import { initializeApp } from "firebase/app";
+/*import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 // 🔁 Substitua os valores abaixo pelas suas credenciais do Firebase Web
@@ -15,4 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { auth };
+export { auth };*/
