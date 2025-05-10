@@ -5,6 +5,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import BottomNavigation from "./BottomNavigation";
 import PlayerControls from "./PlayerControls";
+import { BlurView } from "expo-blur";
 
 const ScreenMain = ({
   avatar,
@@ -21,7 +22,8 @@ const ScreenMain = ({
   showProgresso = true, // padrão é mostrar o progresso
   showBorder = true, // padrão é mostrar a borda
   showTitle = true, // padrão é mostrar o título
-  showAvatar = true // padrão é mostrar o Avatar
+  showAvatar = true, // padrão é mostrar o Avatar
+  showglassEffect = true, // padrão é mostrar o efeito de vidro
 }) => {
   // Função para formatar o tempo de milissegundos para mm:ss
   const formatTime = (millis) => {
@@ -39,6 +41,7 @@ const ScreenMain = ({
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
+        
         {/* Avatar */}
         {showAvatar && avatar && (
         <Image style={styles.imageAvatar} source={avatar} />
@@ -46,7 +49,7 @@ const ScreenMain = ({
 
         {/* Título principal */}
         {showTitle && (
-        <Text style={styles.textHome}>Home</Text>
+        <Text style={styles.textHome}>Music</Text>
         )}
 
         {/* Capa do álbum */}
@@ -84,6 +87,8 @@ const ScreenMain = ({
 
         {/* Conteúdo customizado passado como children */}
         {children}
+        
+        
 
         {/* Menu inferior de navegação */}
       </LinearGradient>
@@ -96,44 +101,41 @@ const ScreenMain = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ocupar espaço restante da tela
-    paddingTop: 45,
-    //alignItems: "center",
+    paddingTop: 170,
   },
   imageAvatar: {
-    width: 65,
-    height: 65,
+    width: 95,
+    height: 95,
     borderRadius: 25,
     alignSelf: "center",
-    //textAlign: "center",
   },
   textHome: {
-    fontSize: 25,
+    fontSize: 35,
     fontWeight: "bold",
-    marginBottom: 20,
-    //alignItems: "center",
+    marginBottom: 30,
     textAlign: "center",
   },
   albumCover: {
     backgroundColor: "#ccc",
     padding: 10,
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: 30,
     alignItems: "center",
     alignSelf: "center",
   },
   albumImage: {
-    width: 200,
-    height: 200,
+    width: 270,
+    height: 270,
     resizeMode: "cover",
   },
   songTitle: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
     
   },
   albumTitle: {
-    fontSize: 18,
+    fontSize: 25,
     color: "#555",
     marginTop: 10,
     textAlign: "center",
@@ -163,6 +165,12 @@ const styles = StyleSheet.create({
     marginTop: -35,
     alignSelf: "center",
   },
+ // glassEffect: { //efeito de vidro na tela de musicScreen
+    //flex: 1,
+   // paddingHorizontal: 20,
+    //paddingTop: 170,
+    //borderRadius: 20, // opcional, se quiser deixar mais suave
+  //},
 });
 
 export default ScreenMain;

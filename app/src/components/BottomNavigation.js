@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import { Link, usePathname } from "expo-router";
 
 const BottomNavigation = () => {
@@ -11,10 +11,10 @@ const BottomNavigation = () => {
       {/* O prop asChild faz o <Link> usar o TouchableOpacity como base, sem quebrar layout nem acessibilidade */}
       <Link href="/HomeScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
-          <Feather
-            name="music"
+          <Ionicons
+            name={pathname === "/HomeScreen" ? "musical-notes" : "musical-notes-outline"}
             size={24}
-            color={pathname === "/HomeScreen" ? "#00E0D6" : "#F7F7F7"}
+            color="#FFFFFF"
           />
           <Text
             style={[
@@ -29,10 +29,10 @@ const BottomNavigation = () => {
 
       <Link href="/LibraryScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
-          <Feather
-            name="search"
+          <Ionicons
+            name={pathname === "/LibraryScreen" ? "search" : "search-outline"}
             size={24}
-            color={pathname === "/LibraryScreen" ? "#00E0D6" : "#F7F7F7"}
+            color="#F7F7F7"
           />
           <Text
             style={[
@@ -47,10 +47,10 @@ const BottomNavigation = () => {
 
       <Link href="/FavoriteScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
-          <Feather
-            name="heart"
+          <Ionicons
+            name={pathname === "/FavoriteScreen" ? "heart" : "heart-outline"}
             size={24}
-            color={pathname === "/FavoriteScreen" ? "#00E0D6" : "#F7F7F7"}
+            color="#F7F7F7"
           />
           <Text
             style={[
@@ -65,10 +65,10 @@ const BottomNavigation = () => {
 
       <Link href="/ProfileScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
-          <Feather
-            name="user"
+          <Ionicons
+            name={pathname === "/ProfileScreen" ? "person" : "person-outline"}
             size={24}
-            color={pathname === "/ProfileScreen" ? "#00E0D6" : "#F7F7F7"}
+            color="#F7F7F7"
           />
           <Text
             style={[
@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: "100%",
     paddingVertical: 10,
-    backgroundColor: "black",
+    backgroundColor: "#000000",
+    
   },
   navItem: {
     alignItems: "center",

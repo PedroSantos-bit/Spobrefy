@@ -13,8 +13,8 @@ const CategoryCard = ({ title, image }) => (
 
 const styles = StyleSheet.create({
     card: {
-        width: 150,
-        height: 95,
+        width: 250,
+        height: 240,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#FFFFFF',
-        fontSize: 16,
+        fontSize: 25,
         fontWeight: 'bold',
     }
 });

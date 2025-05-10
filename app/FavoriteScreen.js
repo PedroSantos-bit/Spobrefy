@@ -1,4 +1,6 @@
 import React from "react";
+import { BlurView } from "expo-blur";
+import { Link } from "expo-router";
 import {
   StyleSheet,
   View,
@@ -36,7 +38,48 @@ const recentSearches = [
     type: "Playlist",
     icon: require("../assets/favicon.png"),
   },
+  {
+    id: "5",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
+  {
+    id: "6",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
+  {
+    id: "7",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
+  {
+    id: "8",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
+  {
+    id: "9",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
+  {
+    id: "10",
+    title: "Phonk Madness",
+    type: "Playlist",
+    icon: require("../assets/favicon.png"),
+  },
 ];
+
+const togglePlayer = () => {
+  setIsPlayerVisible(!isPlayerVisible);
+  translateY.value = isPlayerVisible ? 1000 : 0; // Move o player para fora da tela ou para dentro
+};
 
 export default function FavoriteScreen() {
   return (
@@ -59,12 +102,12 @@ export default function FavoriteScreen() {
           />
           <Icon
             name="search"
-            size={22}
+            size={30}
             color="#f7F7F7"
             style={styles.searchIcon}
           />
         </View>
-
+        <View style={{ flex: 1, width: "100%" }}>
         <FlatList
           data={recentSearches}
           keyExtractor={(item) => item.id}
@@ -82,21 +125,27 @@ export default function FavoriteScreen() {
             </View>
           )}
         />
-
-        {/* Mini player fixo */}
-        <View style={styles.miniPlayer}>
-          <Image
-            source={require("../assets/favicon.png")}
-            style={styles.playerImage}
-          />
-          <View>
-            <Text style={styles.playerTitle}>Inside Out</Text>
-            <Text style={styles.playerSubtitle}>The Chainsmokers, Charlee</Text>
-          </View>
-          <TouchableOpacity style={styles.playButton}>
-            <Icon name="play" size={22} color="#fff" />
-          </TouchableOpacity>
         </View>
+        {/* Mini player fixo */}
+        <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
+                  <Image
+                    source={require("../assets/favicon.png")}
+                    style={styles.playerImage}
+                  />
+                  <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
+                    <Link href="/MusicScreen">
+                      <View>
+                        <Text style={styles.playerTitle}>Inside Out</Text>
+                        <Text style={styles.playerSubtitle}>
+                          The Chainsmokers, Charlee
+                        </Text>
+                      </View>
+                    </Link>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.playButton}>
+                    <Icon name="play" size={30} color="#fff" />
+                  </TouchableOpacity>
+                </BlurView>
       </View>
     </ScreenMain>
   );
@@ -117,26 +166,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 0,
-    marginTop: 10,
+    marginTop: -80,
     marginBottom: 30,
   },
   inputText: {
     color: "#F7F7F7",
     fontSize: 18,
-    textAlign: "left",
+    textAlign: "center",
     paddingVertical: 5,
     flex: 1,
     borderWidth: 0,
     backgroundColor: "transparent",
     paddingVertical: 5,
     outlineStyle: "none",
+    fontWeight: "bold",
   },
   searchIcon: {},
   itemRow: {
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 14,
-    backgroundColor: "#FF0000",
+    backgroundColor: "#000000",
     width: "100%",
     justifyContent: "flex-end",
   },
@@ -147,48 +197,55 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   textContainer: {
-    width: "67%",
+    width: "78%",
     gap: 5,
   },
   itemTitle: {
-    color: "#000000",
+    color: "#F7F7F7",
     fontWeight: "bold",
-    fontSize: 15,
+    fontSize: 18,
   },
   itemType: {
-    color: "#000000",
-    fontSize: 15,
+    color: "#F7F7F7",
+    fontSize: 18,
   },
   buttonX: {
     color: "#F7F7F7",
-    fontSize: 30,
+    fontSize: 35,
     marginRight: 10,
   },
   miniPlayer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#00B894",
-    padding: 12,
-    borderRadius: 12,
+    backdropFilter: "blur(10px)", // não afeta visualmente, mas boa prática em web
+    backgroundColor: "rgba(0, 0, 0, 0.27)", // <- Preto com 40% de opacidade
+    padding: 20,
+    borderTopWidth: 1,
     position: "absolute",
-    bottom: 0,
-    width: "100%",
+    bottom: 10,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    elevation: 10,
   },
   playerImage: {
-    width: 48,
-    height: 48,
-    borderRadius: 8,
-    marginRight: 12,
+    width: 50,
+    height: 50,
+    borderRadius: 4,
+    marginRight: 15,
   },
   playerTitle: {
-    color: "#fff",
+    color: "#F7F7F7",
+    fontSize: 18,
     fontWeight: "bold",
   },
   playerSubtitle: {
-    color: "#eee",
-    fontSize: 12,
+    color: "#F7F7F7",
+    fontSize: 16,
   },
   playButton: {
     marginLeft: "auto",
+    padding: 10,
+    
   },
 });

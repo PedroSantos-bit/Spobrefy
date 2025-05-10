@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import Animated, { FadeInUp } from "react-native";
+import Animated, { FadeInUp, requireNativeComponent } from "react-native";
 import ScreenMain from "./src/components/ScreenMain";
 import {
   StyleSheet,
@@ -14,6 +14,22 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function ProfileScreen() {
   const [image, setImage] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
+
+  // Algumas imagens de avatar prontas
+  const imageOptions = [
+    require('../assets/icone.png'),
+    require('../assets/PerfilOne.jpeg'),
+    require('../assets/PerfilTwo.jpeg'),
+    require('../assets/PerfilThree.jpeg'),
+    require('../assets/PerfilFour.jpeg'),
+    require('../assets/PerfilFive.jpeg'),
+  ];
+
+  const handleSelectImage = (uri) => {
+    setImage(uri);
+    setShowOptions(false);
+  };
 
   async function pickImage() {
     // Pede permissão para acessar a galeria
@@ -53,19 +69,35 @@ export default function ProfileScreen() {
 
         {/* Avatar com ícone de edição */}
         <View style={styles.containerAvatar}>
-          {/* Se tiver imagem, mostra ela, senão mostra ícone */}
-          {image ? (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 100, height: 100, borderRadius: 50 }}
-            />
-          ) : (
-            <Ionicons name="person-circle" size={125} color="#FFFFFF" />
-          )}
+          <TouchableOpacity onPress={() => setShowOptions(!showOptions)}>
+            {/* Se tiver imagem, mostra ela, senão mostra ícone */}
+            {image ? (
+              <Image
+                source={ typeof image === 'string' ? { uri: image } : image }
+                style={{ width: 100, height: 100, borderRadius: 50 }}
+              />
+            ) : (
+              <Ionicons name="person-circle" size={125} color="#FFFFFF" />
+            )}
+          </TouchableOpacity>
 
           <TouchableOpacity style={styles.editIcon} onPress={pickImage}>
             <Ionicons name="camera" size={35} color="#000" />
           </TouchableOpacity>
+
+          {/* Mostrar opções de imagem ao clicar no avatar */}
+          {showOptions && (
+            <View style={styles.imageOptionsContainer}>
+              {imageOptions.map((uri, index) => (
+                <TouchableOpacity
+                  key={index}
+                  onPress={() => handleSelectImage(uri)}
+                >
+                  <Image source={ typeof uri === "string" ? { uri } : uri} style={styles.optionImage} />
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
         </View>
 
         {/* Inputs de Nome, Email, Senha */}
@@ -109,13 +141,12 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   containerProfile: {
     flex: 1,
-
     paddingHorizontal: 20,
-
     justifyContent: "flex-start",
+    paddingTop: 0,
   },
   titleProfile: {
-    fontSize: 20,
+    fontSize: 35,
     color: "#FFFFFF",
     fontWeight: "bold",
     marginBottom: 10,
@@ -124,25 +155,47 @@ const styles = StyleSheet.create({
   containerAvatar: {
     position: "relative",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 70,
   },
   editIcon: {
     position: "absolute",
     bottom: 0,
-    right: 240 / 2 - 10, //controla a posição da camera 
+    right: 240 / 1 - 10, //controla a posição da camera
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
     padding: 5,
   },
+  imageOptionsContainer: {
+    position: "absolute",
+    top: 125, // move altura dos icones avatar
+    padding: 20,
+    zIndex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 10,
+  },
+  optionImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginHorizontal: 5,
+    borderWidth: 2,
+    borderColor: "#FFF",
+  },
+
   containerInput: {
     width: "100%",
+    alignItems: "center",
 
     //backgroundColor: "#ffff",
   },
   label: {
-    fontSize: 16,
+    fontSize: 20,
     color: "#FFFFFF",
     fontWeight: "bold",
+    textAlign: "left", // move o texto para a esquerda
+    alignSelf: "flex-start", // garante que o Text não fique centralizado horizontalmente
+    marginLeft: "5%", // opcional: controla a margem da esquerda
   },
   input: {
     backgroundColor: "#000000",
@@ -150,8 +203,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 17,
     paddingHorizontal: 20,
-    width: "100%",
-    marginBottom: 10, // adiciona espaço entre inputs
+    width: "90%",
+    marginBottom: 15, // adiciona espaço entre inputs
     textAlign: "left",
   },
   buttonDelete: {
@@ -160,7 +213,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 12,
 
-    width: "80%",
+    width: "50%",
     alignItems: "center",
     alignSelf: "center",
   },
@@ -171,10 +224,9 @@ const styles = StyleSheet.create({
   buttonExit: {
     backgroundColor: "#000000",
     paddingVertical: 12,
-
     borderRadius: 12,
     marginTop: 15,
-    width: "70%",
+    width: "30%",
     alignItems: "center",
     alignSelf: "center",
   },
