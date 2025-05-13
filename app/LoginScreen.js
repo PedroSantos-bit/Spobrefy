@@ -55,7 +55,6 @@ function LoginScreen() {
   }
 };
 
-
   return (
     <LinearGradient colors={["#2f4f4f", "#2e8b57", "#3cb371", "#2f4f4f"]} style={styles.container}>
       <StatusBar style="light" backgroundColor="#2f4f4f" />
