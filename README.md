@@ -8,13 +8,14 @@
 
 Este projeto foi desenvolvido por:
 
-- Pedro Lucas
-- Pedro Silva
-- Luiz
-- Camila
-- Vitor
-- Jonathan R. Germano 
-- Henrique
+- Pedro Lucas (Scrum Master)
+- Luiz (Documentação e Requisitos mínimos)
+- Camila (UX/UI)
+- Pedro Silva (Dev Front-end)
+- Vitor (Integrações de APIs)
+- Jonathan R. Germano (Dev Full-Stack)
+- Henrique (Banco de Dados)
+
 
 ---
 
