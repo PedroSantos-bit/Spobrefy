@@ -9,6 +9,7 @@
 Este projeto foi desenvolvido por:
 
 - Pedro Lucas
+- Pedro Silva
 - Luiz
 - Camila
 - Vitor
