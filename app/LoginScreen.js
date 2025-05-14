@@ -16,7 +16,6 @@ import { Link } from "expo-router";
 import { auth } from "../firebase/public/firebase";
 import { useRouter } from "expo-router";
 
-
 WebBrowser.maybeCompleteAuthSession();
 
 function LoginScreen() {
