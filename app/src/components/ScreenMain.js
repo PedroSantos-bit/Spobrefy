@@ -5,7 +5,6 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import BottomNavigation from "./BottomNavigation";
 import PlayerControls from "./PlayerControls";
-import { BlurView } from "expo-blur";
 
 const ScreenMain = ({
   avatar,
@@ -17,13 +16,15 @@ const ScreenMain = ({
   duration,
   children,
   soundRef,
+  isPlaying, // play / pause musica 
   showControls = true, // padrão é mostrar os controles
   showTime = true, // padrão é mostrar o tempo
   showProgresso = true, // padrão é mostrar o progresso
   showBorder = true, // padrão é mostrar a borda
   showTitle = true, // padrão é mostrar o título
   showAvatar = true, // padrão é mostrar o Avatar
-  showglassEffect = true, // padrão é mostrar o efeito de vidro
+  onNext,       // <- NOVO
+  onPrev,        // <- NOVO
 }) => {
   // Função para formatar o tempo de milissegundos para mm:ss
   const formatTime = (millis) => {
@@ -36,21 +37,18 @@ const ScreenMain = ({
     // View externa que ocupa a tela inteira
     <View style={{ flex: 1 }}>
       <LinearGradient
-        colors={[ '#2f4f4f' , '#2e8b57', '#3cb371','#3cb371', '#2f4f4f' ]}
+        colors={["#2f4f4f", "#2e8b57", "#3cb371", "#3cb371", "#2f4f4f"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.container}
       >
-        
         {/* Avatar */}
         {showAvatar && avatar && (
-        <Image style={styles.imageAvatar} source={avatar} />
+          <Image style={styles.imageAvatar} source={avatar} />
         )}
 
         {/* Título principal */}
-        {showTitle && (
-        <Text style={styles.textHome}>Music</Text>
-        )}
+        {showTitle && <Text style={styles.textHome}>Music</Text>}
 
         {/* Capa do álbum */}
         {showBorder && albumImage && (
@@ -83,12 +81,13 @@ const ScreenMain = ({
         )}
 
         {/* Mostrar controles apenas se showControls for true */}
-        {showControls && <PlayerControls soundRef={soundRef} />}
+        {showControls && (
+          <PlayerControls soundRef={soundRef} onNext={onNext} onPrev={onPrev} 
+          isPlaying={isPlaying} />
+        )}
 
         {/* Conteúdo customizado passado como children */}
         {children}
-        
-        
 
         {/* Menu inferior de navegação */}
       </LinearGradient>
@@ -132,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     textAlign: "center",
-    
   },
   albumTitle: {
     fontSize: 25,
@@ -165,12 +163,6 @@ const styles = StyleSheet.create({
     marginTop: -35,
     alignSelf: "center",
   },
- // glassEffect: { //efeito de vidro na tela de musicScreen
-    //flex: 1,
-   // paddingHorizontal: 20,
-    //paddingTop: 170,
-    //borderRadius: 20, // opcional, se quiser deixar mais suave
-  //},
 });
 
 export default ScreenMain;

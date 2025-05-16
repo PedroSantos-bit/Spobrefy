@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import Animated, { FadeInUp, requireNativeComponent } from "react-native";
 import ScreenMain from "./src/components/ScreenMain";
 import {
   StyleSheet,
@@ -11,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 export default function ProfileScreen() {
   const [image, setImage] = useState(null);
@@ -18,12 +18,12 @@ export default function ProfileScreen() {
 
   // Algumas imagens de avatar prontas
   const imageOptions = [
-    require('../assets/icone.png'),
-    require('../assets/PerfilOne.jpeg'),
-    require('../assets/PerfilTwo.jpeg'),
-    require('../assets/PerfilThree.jpeg'),
-    require('../assets/PerfilFour.jpeg'),
-    require('../assets/PerfilFive.jpeg'),
+    require("../assets/icone.png"),
+    require("../assets/PerfilOne.jpeg"),
+    require("../assets/PerfilTwo.jpeg"),
+    require("../assets/PerfilThree.jpeg"),
+    require("../assets/PerfilFour.jpeg"),
+    require("../assets/PerfilFive.jpeg"),
   ];
 
   const handleSelectImage = (uri) => {
@@ -73,7 +73,7 @@ export default function ProfileScreen() {
             {/* Se tiver imagem, mostra ela, senão mostra ícone */}
             {image ? (
               <Image
-                source={ typeof image === 'string' ? { uri: image } : image }
+                source={typeof image === "string" ? { uri: image } : image}
                 style={{ width: 100, height: 100, borderRadius: 50 }}
               />
             ) : (
@@ -93,7 +93,10 @@ export default function ProfileScreen() {
                   key={index}
                   onPress={() => handleSelectImage(uri)}
                 >
-                  <Image source={ typeof uri === "string" ? { uri } : uri} style={styles.optionImage} />
+                  <Image
+                    source={typeof uri === "string" ? { uri } : uri}
+                    style={styles.optionImage}
+                  />
                 </TouchableOpacity>
               ))}
             </View>
@@ -102,36 +105,45 @@ export default function ProfileScreen() {
 
         {/* Inputs de Nome, Email, Senha */}
         <View style={styles.containerInput}>
-          <Text style={styles.label}>Nome</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Alterar nome"
-            placeholderTextColor="#CCC"
-          />
+          <TouchableOpacity style={styles.containerInput}>
+            <Text style={styles.label}>Nome</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Alterar nome"
+              placeholderTextColor="#CCC"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.containerInput}>
+            <Text style={styles.label}>Email</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Alterar E-mail"
+              placeholderTextColor="#CCC"
+            />
+          </TouchableOpacity>
 
-          <Text style={styles.label}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Alterar E-mail"
-            placeholderTextColor="#CCC"
-          />
-
-          <Text style={styles.label}>Senha</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Alterar senha"
-            placeholderTextColor="#CCC"
-            secureTextEntry // Deixa o texto da senha oculto
-          />
+          <TouchableOpacity style={styles.containerInput}>
+            <Text style={styles.label}>Senha</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Alterar senha"
+              placeholderTextColor="#CCC"
+              secureTextEntry // Deixa o texto da senha oculto
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Botões */}
         <TouchableOpacity style={styles.buttonDelete}>
+          <Link href="/LoginScreen">
           <Text style={styles.buttonText}>Excluir conta</Text>
+          </Link>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonExit}>
+          <Link href="/LoginScreen">
           <Text style={styles.buttonText}>Sair</Text>
+          </Link>
         </TouchableOpacity>
       </View>
     </ScreenMain>
@@ -186,8 +198,11 @@ const styles = StyleSheet.create({
   containerInput: {
     width: "100%",
     alignItems: "center",
-
-    //backgroundColor: "#ffff",
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    borderColor: "transparent",
+    underlineColorAndroid: "transparent", // Android
+    outlineStyle: "none", // web, só por precaução
   },
   label: {
     fontSize: 20,
@@ -198,19 +213,19 @@ const styles = StyleSheet.create({
     marginLeft: "5%", // opcional: controla a margem da esquerda
   },
   input: {
-    backgroundColor: "#000000",
+    backgroundColor: "rgba(0,0,0,0.9)",
     color: "#FFFFFF",
     borderRadius: 12,
     paddingVertical: 17,
     paddingHorizontal: 20,
     width: "90%",
-    marginBottom: 15, // adiciona espaço entre inputs
+    marginBottom: 5, // adiciona espaço entre inputs
     textAlign: "left",
   },
   buttonDelete: {
     backgroundColor: "#000000",
     paddingVertical: 12,
-
+    marginTop: 15,
     borderRadius: 12,
 
     width: "50%",
@@ -225,7 +240,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000",
     paddingVertical: 12,
     borderRadius: 12,
-    marginTop: 15,
+    marginTop: 10,
     width: "30%",
     alignItems: "center",
     alignSelf: "center",

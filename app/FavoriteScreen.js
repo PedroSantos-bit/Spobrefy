@@ -108,44 +108,44 @@ export default function FavoriteScreen() {
           />
         </View>
         <View style={{ flex: 1, width: "100%" }}>
-        <FlatList
-          data={recentSearches}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <View style={styles.itemRow}>
-              <Image source={item.icon} style={styles.icon} />
-              <View style={styles.textContainer}>
-                <Text style={styles.itemTitle}>{item.title}</Text>
-                <Text style={styles.itemType}>{item.type}</Text>
+          <FlatList
+            data={recentSearches}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={styles.itemRow}>
+                <Image source={item.icon} style={styles.icon} />
+                <View style={styles.textContainer}>
+                  <Text style={styles.itemTitle}>{item.title}</Text>
+                  <Text style={styles.itemType}>{item.type}</Text>
+                </View>
+                {/* button do X */}
+                <TouchableOpacity>
+                  <Icon name="heart" style={styles.buttonX} />
+                </TouchableOpacity>
               </View>
-              {/* button do X */}
-              <TouchableOpacity>
-                <Icon name="heart" style={styles.buttonX} />
-              </TouchableOpacity>
-            </View>
-          )}
-        />
+            )}
+          />
         </View>
         {/* Mini player fixo */}
         <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
-                  <Image
-                    source={require("../assets/favicon.png")}
-                    style={styles.playerImage}
-                  />
-                  <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
-                    <Link href="/MusicScreen">
-                      <View>
-                        <Text style={styles.playerTitle}>Inside Out</Text>
-                        <Text style={styles.playerSubtitle}>
-                          The Chainsmokers, Charlee
-                        </Text>
-                      </View>
-                    </Link>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.playButton}>
-                    <Icon name="play" size={30} color="#fff" />
-                  </TouchableOpacity>
-                </BlurView>
+          <Image
+            source={require("../assets/favicon.png")}
+            style={styles.playerImage}
+          />
+          <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
+            <Link href="/MusicScreen">
+              <View>
+                <Text style={styles.playerTitle}>Inside Out</Text>
+                <Text style={styles.playerSubtitle}>
+                  The Chainsmokers, Charlee
+                </Text>
+              </View>
+            </Link>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playButton}>
+            <Icon name="play" size={30} color="#fff" />
+          </TouchableOpacity>
+        </BlurView>
       </View>
     </ScreenMain>
   );
@@ -246,6 +246,5 @@ const styles = StyleSheet.create({
   playButton: {
     marginLeft: "auto",
     padding: 10,
-    
   },
 });

@@ -98,10 +98,7 @@ const HomeScreen = () => {
               {[
                 { title: "Inside Out", image: "https://picsum.photos/200/200" },
                 { title: "Young", image: "https://picsum.photos/200/200" },
-                {
-                  title: "Beach House",
-                  image: "https://picsum.photos/200/200",
-                },
+                { title: "Beach House", image: "https://picsum.photos/200/200" },
                 { title: "Kills You", image: "https://picsum.photos/200/200" },
                 { title: "teste", image: "https://picsum.photos/200/200" },
                 { title: "teste", image: "https://picsum.photos/200/200" },
@@ -127,12 +124,12 @@ const HomeScreen = () => {
               image="https://i.scdn.co/image/ab67706f00000002b0a43e616020095ef25311f6"
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://picsum.photos/200/200"
+              title=".."
+              image="https://i1.sndcdn.com/artworks-kdIBQeaUBu2H-0-t500x500.jpg"
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://picsum.photos/200/200"
+              title=".."
+              image="https://i1.sndcdn.com/artworks-000145905516-xfbjwu-t500x500.jpg"
             />
             <CategoryCard
               title="INTERNATIONAL"

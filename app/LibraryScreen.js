@@ -97,7 +97,9 @@ export default function LibraryScreen() {
       soundRef={{ current: { playAsync: () => {} } }} // dummy ref só de exemplo
     >
       <View style={styles.container}>
+        <TouchableOpacity style={styles.searchBarr}>
         <View style={styles.searchBar}>
+          
           <TextInput
             placeholder="O que você quer ouvir?"
             style={styles.input}
@@ -110,6 +112,7 @@ export default function LibraryScreen() {
             style={styles.searchIcon}
           />
         </View>
+        </TouchableOpacity>
 
         {/* Título */}
         <Text style={styles.sectionTitle}>Buscas recentes</Text>
@@ -169,16 +172,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchBar: {
-    width: "80%",
+    width: "100%",
     backgroundColor: "#1C1C1E",
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 0,
     marginTop: -80,
+  },
+  searchBarr: {
+    width: "80%",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    alignItems: "center",
+    marginTop: -30,
   },
   input: {
     color: "#F7F7F7",
@@ -194,8 +203,8 @@ const styles = StyleSheet.create({
   },
   searchIcon: {}, // vamos ver o que fazer depois
   sectionTitle: {
-    color: "#000000",
-    fontSize: 20,
+    color: "#F7F7F7",
+    fontSize: 25,
     marginBottom: 5,
     fontWeight: "bold",
     paddingVertical: 10,

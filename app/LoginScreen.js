@@ -6,7 +6,6 @@ import {
   Alert,
   TouchableOpacity,
   Image,
-  ImageBackground,
   TextInput,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -19,6 +18,10 @@ import { auth } from "../firebase/public/firebase";
 WebBrowser.maybeCompleteAuthSession();
 
 function LoginScreen() {
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
   useEffect(() => {
     if (auth) {
       console.log("✅ Firebase conectado com sucesso!");
@@ -40,6 +43,16 @@ function LoginScreen() {
       console.log(authentication);
     }
   }, [response]);
+
+  const handleLogin = () => {
+    if (!login || !password) {
+      Alert.alert("Erro", "Preencha todos os campos.");
+    } else if (login === "teste@gmail.com" && password === "09teste") {
+      router.push("/HomeScreen"); // Redireciona para a tela HomeScreen
+    } else {
+      Alert.alert("Erro", "Nome de usuário ou senha incorretos.");
+    }
+  };
 
   return (
     <LinearGradient
@@ -92,7 +105,7 @@ function LoginScreen() {
         </TouchableOpacity>
 
         {/* Botão Entrar */}
-        <TouchableOpacity style={styles.buttonGoogleEnter}>
+        <TouchableOpacity style={styles.buttonGoogleEnter} onPress={handleLogin} >
           <Link href={"/HomeScreen"}>
             <Text style={styles.textButtonEnter}>ENTRAR</Text>
           </Link>
