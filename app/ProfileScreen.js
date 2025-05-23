@@ -18,12 +18,12 @@ export default function ProfileScreen() {
 
   // Algumas imagens de avatar prontas
   const imageOptions = [
-    require("../assets/icone.png"),
-    require("../assets/PerfilOne.jpeg"),
-    require("../assets/PerfilTwo.jpeg"),
-    require("../assets/PerfilThree.jpeg"),
-    require("../assets/PerfilFour.jpeg"),
-    require("../assets/PerfilFive.jpeg"),
+    require("./src/img/IconeApp.png"),
+    require("./src/img/PerfilOne.jpeg"),
+    require("./src/img/PerfilTwo.jpeg"),
+    require("./src/img/PerfilThree.jpeg"),
+    require("./src/img/PerfilFour.jpeg"),
+    require("./src/img/PerfilFive.jpeg"),
   ];
 
   const handleSelectImage = (uri) => {
@@ -136,13 +136,13 @@ export default function ProfileScreen() {
         {/* Botões */}
         <TouchableOpacity style={styles.buttonDelete}>
           <Link href="/LoginScreen">
-          <Text style={styles.buttonText}>Excluir conta</Text>
+            <Text style={styles.buttonText}>Excluir conta</Text>
           </Link>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonExit}>
           <Link href="/LoginScreen">
-          <Text style={styles.buttonText}>Sair</Text>
+            <Text style={styles.buttonText}>Sair</Text>
           </Link>
         </TouchableOpacity>
       </View>

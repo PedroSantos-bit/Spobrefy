@@ -24,7 +24,7 @@ export default function CadastroScreen() {
       <View style={styles.content}>
         {/* Imagem e título fixos */}
         <Image
-          source={require("../assets/IconeApp.png")}
+          source={require("./src/img/IconeApp.png")}
           style={styles.imageTitle}
         />
         <Text style={styles.titleApp}>
@@ -62,7 +62,7 @@ export default function CadastroScreen() {
         {/* Botão Entrar */}
         <TouchableOpacity style={styles.buttonGoogleEnter}>
           <Link href="/HomeScreen">
-          <Text style={styles.textButtonEnter}>CRIAR CONTA</Text>
+            <Text style={styles.textButtonEnter}>CRIAR CONTA</Text>
           </Link>
         </TouchableOpacity>
       </View>

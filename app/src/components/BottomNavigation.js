@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   navLabel: {
     fontSize: 12,
-    color: "white",
+    color: "#f7f7f7",
   },
 });
 

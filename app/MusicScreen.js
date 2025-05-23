@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Audio } from "expo-av";
 import ScreenMain from "./src/components/ScreenMain";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { trackData } from "./src/components/MusicData";
+import { LinearGradient } from "expo-linear-gradient";
 
 const MusicScreen = () => {
   const [sound, setSound] = useState(null);
@@ -29,7 +30,9 @@ const MusicScreen = () => {
         if (status.isLoaded) {
           setDuration(status.durationMillis || 1);
           setPosition(status.positionMillis || 0);
-          setProgress((status.positionMillis || 0) / (status.durationMillis || 1));
+          setProgress(
+            (status.positionMillis || 0) / (status.durationMillis || 1)
+          );
           setIsPlaying(status.isPlaying);
         }
       });
@@ -62,19 +65,23 @@ const MusicScreen = () => {
   };
 
   return (
-    <ScreenMain
-      avatar={require("../assets/icone.png")}
-      albumImage={currentTrack.image}
-      title={currentTrack.title}
-      subtitle={currentTrack.subtitle}
-      progress={progress}
-      position={position}
-      duration={duration}
-      soundRef={{ current: sound }}
-      onNext={handleNext}
-      onPrev={handlePrev}
-      isPlaying={isPlaying}
-    />
+    <View style={{ flex: 1 }}>
+      
+        <ScreenMain
+          avatar={require("./src/img/IconeApp.png")}
+          albumImage={currentTrack.image}
+          title={currentTrack.title}
+          subtitle={currentTrack.subtitle}
+          progress={progress}
+          position={position}
+          duration={duration}
+          soundRef={{ current: sound }}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          isPlaying={isPlaying}
+          gradientColors={["#FF00FF", "#4B0082", "#8A2BE2", "#8A2BE2"]} // <- aqui!
+        />
+    </View>
   );
 };
 

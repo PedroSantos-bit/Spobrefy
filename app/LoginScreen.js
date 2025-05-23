@@ -11,9 +11,10 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import { auth } from "../firebase/public/firebase";
+import { useRouter } from "expo-router";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -67,7 +68,7 @@ function LoginScreen() {
       <View style={styles.content}>
         {/* Imagem e título fixos */}
         <Image
-          source={require("../assets/IconeApp.png")}
+          source={require("./src/img/IconeApp.png")}
           style={styles.imageTitle}
         />
 
@@ -81,7 +82,7 @@ function LoginScreen() {
           onPress={() => promptAsync()}
         >
           <Image
-            source={require("../assets/google-icon.png")}
+            source={require("./src/img/google-icon.png")}
             style={[styles.googleIcon, { marginRight: 40 }]}
           />
           <Text style={styles.textButtonGoogle}>Login com o Google</Text>
@@ -92,6 +93,8 @@ function LoginScreen() {
             style={styles.input}
             placeholder="E-mail ou nome de usuário"
             placeholderTextColor="#f7f7f7"
+            value={login}
+            onChangeText={setLogin}
           />
         </TouchableOpacity>
 
@@ -101,11 +104,16 @@ function LoginScreen() {
             placeholder="Senha"
             placeholderTextColor="#f7f7f7"
             secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
           />
         </TouchableOpacity>
 
         {/* Botão Entrar */}
-        <TouchableOpacity style={styles.buttonGoogleEnter} onPress={handleLogin} >
+        <TouchableOpacity
+          style={styles.buttonGoogleEnter}
+          onPress={handleLogin}
+        >
           <Link href={"/HomeScreen"}>
             <Text style={styles.textButtonEnter}>ENTRAR</Text>
           </Link>

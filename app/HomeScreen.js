@@ -98,7 +98,10 @@ const HomeScreen = () => {
               {[
                 { title: "Inside Out", image: "https://picsum.photos/200/200" },
                 { title: "Young", image: "https://picsum.photos/200/200" },
-                { title: "Beach House", image: "https://picsum.photos/200/200" },
+                {
+                  title: "Beach House",
+                  image: "https://picsum.photos/200/200",
+                },
                 { title: "Kills You", image: "https://picsum.photos/200/200" },
                 { title: "teste", image: "https://picsum.photos/200/200" },
                 { title: "teste", image: "https://picsum.photos/200/200" },
@@ -112,36 +115,36 @@ const HomeScreen = () => {
           <Text style={styles.sectionTitle}>Navegue por todas as seções</Text>
           <View style={styles.categories}>
             <CategoryCard
-              title="ROCK"
-              image="https://i1.sndcdn.com/avatars-000117283543-spgg5m-t500x500.jpg"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/Pop.jpeg")}
             />
             <CategoryCard
-              title="Funk"
-              image="https://i1.sndcdn.com/artworks-KYy2IK5ym7trxEdd-yVD4vQ-t500x500.jpg"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/funk.jpeg")}
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://i.scdn.co/image/ab67706f00000002b0a43e616020095ef25311f6"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/Eletronica.jpeg")}
             />
             <CategoryCard
-              title=".."
-              image="https://i1.sndcdn.com/artworks-kdIBQeaUBu2H-0-t500x500.jpg"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/Samba.png")}
             />
             <CategoryCard
-              title=".."
-              image="https://i1.sndcdn.com/artworks-000145905516-xfbjwu-t500x500.jpg"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/furacao.jpeg")}
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://picsum.photos/200/200"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/sertanejo.jpeg")}
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://picsum.photos/200/200"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/HipHop.jpeg")}
             />
             <CategoryCard
-              title="INTERNATIONAL"
-              image="https://picsum.photos/200/200"
+              title="" //coloca nome do album na frente do card 
+              image={require("./src/img/pagode.jpeg")}
             />
           </View>
         </ScrollView>
@@ -149,7 +152,7 @@ const HomeScreen = () => {
         {/* Barra do player fixa */}
         <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
           <Image
-            source={require("../assets/favicon.png")}
+            source={require("./src/img/favicon.png")}
             style={styles.playerImage}
           />
           <TouchableOpacity onPress={togglePlayer} style={styles.Music}>

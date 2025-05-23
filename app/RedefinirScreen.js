@@ -21,7 +21,7 @@ export default function RedefinirScreen() {
       <StatusBar style="light" backgroundColor="#2f4f4f" />
 
       {/*<Image
-          source={require('../assets/IconeApp.png')}
+          source={require('./src/img/IconeApp.png')}
           style={styles.imageTitle}
         />*/}
 

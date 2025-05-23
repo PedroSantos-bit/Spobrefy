@@ -5,6 +5,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import BottomNavigation from "./BottomNavigation";
 import PlayerControls from "./PlayerControls";
+import { BlurView } from "expo-blur";
 
 const ScreenMain = ({
   avatar,
@@ -17,6 +18,8 @@ const ScreenMain = ({
   children,
   soundRef,
   isPlaying, // play / pause musica 
+  gradientColors = ["#2f4f4f", "#2e8b57", "#3cb371", "#2f4f4f"], // <- PADRÃO
+  blur = false, // <- nova prop
   showControls = true, // padrão é mostrar os controles
   showTime = true, // padrão é mostrar o tempo
   showProgresso = true, // padrão é mostrar o progresso
@@ -37,7 +40,7 @@ const ScreenMain = ({
     // View externa que ocupa a tela inteira
     <View style={{ flex: 1 }}>
       <LinearGradient
-        colors={["#2f4f4f", "#2e8b57", "#3cb371", "#3cb371", "#2f4f4f"]}
+        colors={gradientColors}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.container}

@@ -20,61 +20,61 @@ const recentSearches = [
     id: "1",
     title: "You (feat. Travis Scott)",
     type: "Song • Don Toliver",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "2",
     title: "John Wick: Chapter 4",
     type: "Album • Tyler Bates, Joel J. Richard",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "3",
     title: "Maroon 5",
     type: "Artist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "4",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "5",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "6",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "7",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "8",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "9",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
   {
     id: "10",
     title: "Phonk Madness",
     type: "Playlist",
-    icon: require("../assets/favicon.png"),
+    icon: require("./src/img/favicon.png"),
   },
 ];
 
@@ -98,20 +98,19 @@ export default function LibraryScreen() {
     >
       <View style={styles.container}>
         <TouchableOpacity style={styles.searchBarr}>
-        <View style={styles.searchBar}>
-          
-          <TextInput
-            placeholder="O que você quer ouvir?"
-            style={styles.input}
-            placeholderTextColor="#F7F7F7"
-          />
-          <Icon
-            name="search"
-            size={30}
-            color="#f7F7F7"
-            style={styles.searchIcon}
-          />
-        </View>
+          <View style={styles.searchBar}>
+            <TextInput
+              placeholder="O que você quer ouvir?"
+              style={styles.input}
+              placeholderTextColor="#F7F7F7"
+            />
+            <Icon
+              name="search"
+              size={30}
+              color="#f7F7F7"
+              style={styles.searchIcon}
+            />
+          </View>
         </TouchableOpacity>
 
         {/* Título */}
@@ -144,7 +143,7 @@ export default function LibraryScreen() {
         {/* Mini player fixo */}
         <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
           <Image
-            source={require("../assets/favicon.png")}
+            source={require("./src/img/favicon.png")}
             style={styles.playerImage}
           />
           <TouchableOpacity onPress={togglePlayer} style={styles.Music}>

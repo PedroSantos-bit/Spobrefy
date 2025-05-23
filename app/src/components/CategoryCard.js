@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, Text } from "react-native";
 
 const CategoryCard = ({ title, image }) => (
   <ImageBackground
-    source={{ uri: image }}
+    source={image}
     style={styles.card}
     imageStyle={{ borderRadius: 8 }}
   >
