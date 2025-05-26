@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Audio } from "expo-av";
-import ScreenMain from "./src/components/ScreenMain";
+import ScreenMain from "../src/components/ScreenMain";
 import { StyleSheet, View } from "react-native";
-import { trackData } from "./src/components/MusicData";
+import { trackData } from "../../Data/MusicData";
 import { LinearGradient } from "expo-linear-gradient";
 
 const MusicScreen = () => {
@@ -68,7 +68,7 @@ const MusicScreen = () => {
     <View style={{ flex: 1 }}>
       
         <ScreenMain
-          avatar={require("./src/img/IconeApp.png")}
+          avatar={require("../src/img/IconeApp.png")}
           albumImage={currentTrack.image}
           title={currentTrack.title}
           subtitle={currentTrack.subtitle}

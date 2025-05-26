@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import ScreenMain from "./src/components/ScreenMain";
+import ScreenMain from "../src/components/ScreenMain";
 import {
   StyleSheet,
   Text,
@@ -18,12 +18,12 @@ export default function ProfileScreen() {
 
   // Algumas imagens de avatar prontas
   const imageOptions = [
-    require("./src/img/IconeApp.png"),
-    require("./src/img/PerfilOne.jpeg"),
-    require("./src/img/PerfilTwo.jpeg"),
-    require("./src/img/PerfilThree.jpeg"),
-    require("./src/img/PerfilFour.jpeg"),
-    require("./src/img/PerfilFive.jpeg"),
+    require("../src/img/IconeApp.png"),
+    require("../src/img/PerfilOne.jpeg"),
+    require("../src/img/PerfilTwo.jpeg"),
+    require("../src/img/PerfilThree.jpeg"),
+    require("../src/img/PerfilFour.jpeg"),
+    require("../src/img/PerfilFive.jpeg"),
   ];
 
   const handleSelectImage = (uri) => {
@@ -135,13 +135,13 @@ export default function ProfileScreen() {
 
         {/* Botões */}
         <TouchableOpacity style={styles.buttonDelete}>
-          <Link href="/LoginScreen">
+          <Link href="/Login">
             <Text style={styles.buttonText}>Excluir conta</Text>
           </Link>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonExit}>
-          <Link href="/LoginScreen">
+          <Link href="/Login">
             <Text style={styles.buttonText}>Sair</Text>
           </Link>
         </TouchableOpacity>

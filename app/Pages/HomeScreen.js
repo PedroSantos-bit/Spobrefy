@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import AlbumCard from "./src/components/AlbumCard";
-import CategoryCard from "./src/components/CategoryCard";
-import ArtistCircle from "./src/components/ArtistCircle";
-import ScreenMain from "./src/components/ScreenMain";
+import AlbumCard from "../src/components/AlbumCard";
+import CategoryCard from "../src/components/CategoryCard";
+import ArtistCircle from "../src/components/ArtistCircle";
+import ScreenMain from "../src/components/ScreenMain";
 import Icon from "react-native-vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
@@ -116,35 +116,35 @@ const HomeScreen = () => {
           <View style={styles.categories}>
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/Pop.jpeg")}
+              image={require("../src/img/Pop.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/funk.jpeg")}
+              image={require("../src/img/funk.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/Eletronica.jpeg")}
+              image={require("../src/img/Eletronica.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/Samba.png")}
+              image={require("../src/img/Samba.png")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/furacao.jpeg")}
+              image={require("../src/img/furacao.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/sertanejo.jpeg")}
+              image={require("../src/img/sertanejo.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/HipHop.jpeg")}
+              image={require("../src/img/HipHop.jpeg")}
             />
             <CategoryCard
               title="" //coloca nome do album na frente do card 
-              image={require("./src/img/pagode.jpeg")}
+              image={require("../src/img/pagode.jpeg")}
             />
           </View>
         </ScrollView>
@@ -152,11 +152,11 @@ const HomeScreen = () => {
         {/* Barra do player fixa */}
         <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
           <Image
-            source={require("./src/img/favicon.png")}
+            source={require("../src/img/favicon.png")}
             style={styles.playerImage}
           />
           <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
-            <Link href="/MusicScreen">
+            <Link href="/Musica">
               <View>
                 <Text style={styles.playerTitle}>Inside Out</Text>
                 <Text style={styles.playerSubtitle}>

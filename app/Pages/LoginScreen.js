@@ -13,7 +13,7 @@ import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import { useEffect, useState } from "react";
 import { Link } from "expo-router";
-import { auth } from "../firebase/public/firebase";
+import  auth  from '@react-native-firebase/auth'
 import { useRouter } from "expo-router";
 
 WebBrowser.maybeCompleteAuthSession();
@@ -22,6 +22,30 @@ function LoginScreen() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
+  function signUp() {
+    auth().createUserWithEmailAndPassword(login,password).then((userCredential) => {
+      console.log('user: ', userCredential);
+      router.replace('/Home');
+    })
+    .catch(error => {
+      if(error.code === 'auth/email-already-in-use') {
+        console.log('email já existe');
+        Alert.alert("Erro", "Este e-mail já está em uso.");
+      } else if (error.code === 'auth/invalid-email') {      
+        console.log('email inválido');
+        Alert.alert("Erro", "Formato de e-mail inválido.");
+      } else if (error.code === 'auth/weak-password') {
+        console.log('senha fraca');
+        Alert.alert("Erro", "A senha deve ter pelo menos 6 caracteres.");
+      }
+      else {console.error("Erro ao cadastrar:", error.message);
+        Alert.alert("Erro", "Falha no cadastro: " + error.message);
+      }
+    });        
+  }
+
+
 
   useEffect(() => {
     if (auth) {
@@ -42,18 +66,10 @@ function LoginScreen() {
       const { authentication } = response;
       Alert.alert("Login realizado!", `Token: ${authentication.accessToken}`);
       console.log(authentication);
+      router.replace('/Home');
     }
   }, [response]);
 
-  const handleLogin = () => {
-    if (!login || !password) {
-      Alert.alert("Erro", "Preencha todos os campos.");
-    } else if (login === "teste@gmail.com" && password === "09teste") {
-      router.push("/HomeScreen"); // Redireciona para a tela HomeScreen
-    } else {
-      Alert.alert("Erro", "Nome de usuário ou senha incorretos.");
-    }
-  };
 
   return (
     <LinearGradient
@@ -68,7 +84,7 @@ function LoginScreen() {
       <View style={styles.content}>
         {/* Imagem e título fixos */}
         <Image
-          source={require("./src/img/IconeApp.png")}
+          source={require("../src/img/IconeApp.png")}
           style={styles.imageTitle}
         />
 
@@ -82,7 +98,7 @@ function LoginScreen() {
           onPress={() => promptAsync()}
         >
           <Image
-            source={require("./src/img/google-icon.png")}
+            source={require("../src/img/google-icon.png")}
             style={[styles.googleIcon, { marginRight: 40 }]}
           />
           <Text style={styles.textButtonGoogle}>Login com o Google</Text>
@@ -112,18 +128,16 @@ function LoginScreen() {
         {/* Botão Entrar */}
         <TouchableOpacity
           style={styles.buttonGoogleEnter}
-          onPress={handleLogin}
+          onPress={signUp}
         >
-          <Link href={"/HomeScreen"}>
-            <Text style={styles.textButtonEnter}>ENTRAR</Text>
-          </Link>
+          <Text style={styles.textButtonEnter}>ENTRAR</Text>
         </TouchableOpacity>
 
         {/* Links adicionais */}
         <View style={{ marginTop: 40 }}>
           <TouchableOpacity>
             <Link
-              href={"/RedefinirScreen"}
+              href={"/Senha"}
               style={{
                 borderBottomWidth: 0.8,
                 borderBottomColor: "white",
@@ -137,7 +151,7 @@ function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity style={{ marginTop: 20 }}>
-            <Link href={"/CadastroScreen"}>
+            <Link href={"/Cadastro"}>
               <Text style={styles.textButtonRestauPass}>
                 Não tem uma conta? C͟a͟d͟a͟s͟t͟r͟e͟-s͟e͟
               </Text>

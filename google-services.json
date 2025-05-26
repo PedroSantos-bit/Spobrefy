@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "966720969751",
+    "firebase_url": "https://soft-music-6ef73-default-rtdb.firebaseio.com",
+    "project_id": "soft-music-6ef73",
+    "storage_bucket": "soft-music-6ef73.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966720969751:android:3b646561c6d737dd991052",
+        "android_client_info": {
+          "package_name": "com.anonymous.appmusica"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjhiPlq5O-1787inz8GPZSZFqmMi8wldo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966720969751:android:1ba8f44cd05fc0db991052",
+        "android_client_info": {
+          "package_name": "com.softmusic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjhiPlq5O-1787inz8GPZSZFqmMi8wldo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

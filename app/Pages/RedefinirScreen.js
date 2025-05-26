@@ -1,15 +1,16 @@
 import {
   StyleSheet,
+  TextInput,
   Text,
   View,
   TouchableOpacity,
-  TextInput,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { Link } from "expo-router";
 
-export default function ResetPassword() {
+export default function RedefinirScreen() {
   return (
     <LinearGradient
       colors={["#2f4f4f", "#2e8b57", "#3cb371", "#3cb371", "#2f4f4f"]}
@@ -19,9 +20,13 @@ export default function ResetPassword() {
     >
       <StatusBar style="light" backgroundColor="#2f4f4f" />
 
+      {/*<Image
+          source={require('./src/img/IconeApp.png')}
+          style={styles.imageTitle}
+        />*/}
+
       {/* Conteúdo */}
       <View style={styles.content}>
-        {/* Imagem e título fixos */}
         <Text style={styles.titleApp}>Redefina sua senha</Text>
       </View>
 
@@ -30,28 +35,27 @@ export default function ResetPassword() {
         <TouchableOpacity style={styles.buttonGoogle}>
           <TextInput
             style={styles.input}
-            placeholder="Nova senha"
+            placeholder="Email"
             placeholderTextColor="#f7f7f7"
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonGoogle}>
-          <TextInput
-            style={styles.input}
-            placeholder="Confirmar nova senha"
-            placeholderTextColor="#f7f7f7"
-          />
-        </TouchableOpacity>
+        {/* Mensagem de sucesso */}
+        <Text style={styles.message}>
+          Insira o endereço de e-mail vinculado à sua conta do Soft para receber
+          um e-mail de redefinição de senha. Caso não encontre na caixa de
+          entrada, confira também sua caixa de spam ou lixeira.
+        </Text>
 
-        {/* Botão Entrar */}
+        {/* Botão Enviar */}
         <TouchableOpacity style={styles.buttonGoogleEnter}>
-          <Link href="/LoginScreen">
-            <Text style={styles.textButtonEnter}>ALTERAR SENHA</Text>
+          <Link href="/Redefinir">
+            <Text style={styles.textButtonEnter}>ENVIAR</Text>
           </Link>
         </TouchableOpacity>
       </View>
 
-      {/* Footer Página CadastroScreen*/}
+      {/* Rodapé */}
       <View style={styles.footer}>
         <Text style={styles.footerText}>@Todos os direitos reservados.</Text>
       </View>
@@ -67,14 +71,14 @@ const styles = StyleSheet.create({
   },
   content: {
     alignItems: "center",
-    marginTop: "20%", // Jogamos todos os itens para cima ou para baixo
-    marginBottom: 30, // Controla o espaço entre a imagem e os botões
+    marginTop: "15%", // Jogamos todos os itens para cima ou para baixo
+    marginBottom: 20, // Controla o espaço entre a imagem e os botões
   },
   titleApp: {
     color: "#F7F7F7",
     fontSize: 25,
     fontWeight: "bold",
-    top: -80,
+    top: -90,
   },
   buttonConjunt: {
     width: "100%",
@@ -82,16 +86,27 @@ const styles = StyleSheet.create({
   },
   buttonGoogle: {
     flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 20,
     width: "80%",
+    textAlign: "center",
     margin: 10,
+    backgroundColor: "rgba(0,0,0,0.9)",
+  },
+  buttonGoogleEnter: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 20,
+    width: "50%",
+    alignItems: "center",
+    marginTop: 55,
     backgroundColor: "rgba(0,0,0,0.9)",
   },
   input: {
     color: "#fff",
-    fontSize: 16,
+    fontSize: 18,
     textAlign: "left",
     width: "100%",
     backgroundColor: "transparent",
@@ -100,20 +115,20 @@ const styles = StyleSheet.create({
     outlineStyle: "none", // web, só por precaução
     underlineColorAndroid: "transparent", // Android
   },
-  buttonGoogleEnter: {
-    backgroundColor: "rgba(0,0,0,0.9)",
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 20,
-    width: "40%",
-    marginTop: 20,
-    alignItems: "center",
+  message: {
+    color: "#F7F7F7",
+    top: 10,
+    textAlign: "center",
+    fontStyle: "italic",
+    width: "85%",
+    fontSize: 20,
   },
   textButtonEnter: {
-    color: "#F7F7F7",
+    color: "#f7f7f7",
     fontSize: 18,
     fontWeight: "bold",
   },
+
   footer: {
     position: "absolute", // Mantém fixo no rodapé
     bottom: 0, // Sempre no final da tela
