@@ -4,12 +4,12 @@
     "slug": "appmusica",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/src/img/IconeApp.png",
+    "icon": "./src/Img/IconeApp.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "scheme": "appmusica",
     "splash": {
-      "image": "./app/src/img/splash-icon.png",
+      "image": "./src/Img/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,14 +21,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/src/img/adaptive-icon.png",
+        "foregroundImage": "./src/Img/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.appmusica",
       "googleServicesFile": "./google-services.json"
     },
     "web": {
-      "favicon": "./app/src/img/favicon.png"
+      "favicon": "./src/Img/favicon.png"
     },
     "extra": {
       "eas": {
