@@ -9,17 +9,19 @@ const BottomNavigation = () => {
   return (
     <View style={styles.navbar}>
       {/* O prop asChild faz o <Link> usar o TouchableOpacity como base, sem quebrar layout nem acessibilidade */}
-      <Link href="/Home" asChild>
+      <Link href="/HomeScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons
-            name={pathname === "/Home" ? "musical-notes" : "musical-notes-outline"}
+            name={
+              pathname === "/HomeScreen" ? "musical-notes" : "musical-notes-outline"
+            }
             size={24}
             color="#FFFFFF"
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/Home" && { color: "#F7F7F7" },
+              pathname === "/HomeScreen" && { color: "#F7F7F7" },
             ]}
           >
             home
@@ -27,17 +29,17 @@ const BottomNavigation = () => {
         </TouchableOpacity>
       </Link>
 
-      <Link href="/Pesquisa" asChild>
+      <Link href="/LibraryScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons
-            name={pathname === "/Pesquisa" ? "search" : "search-outline"}
+            name={pathname === "/LibraryScreen" ? "search" : "search-outline"}
             size={24}
             color="#F7F7F7"
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/Pesquisa" && { color: "#F7F7F7" },
+              pathname === "/LibraryScreen" && { color: "#F7F7F7" },
             ]}
           >
             search
@@ -45,17 +47,17 @@ const BottomNavigation = () => {
         </TouchableOpacity>
       </Link>
 
-      <Link href="/Favorito" asChild>
+      <Link href="/FavoriteScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons
-            name={pathname === "/Favorito" ? "heart" : "heart-outline"}
+            name={pathname === "/FavoriteScreen" ? "heart" : "heart-outline"}
             size={24}
             color="#F7F7F7"
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/Favorito" && { color: "#F7F7F7" },
+              pathname === "/FavoriteScreen" && { color: "#F7F7F7" },
             ]}
           >
             favorite
@@ -63,17 +65,17 @@ const BottomNavigation = () => {
         </TouchableOpacity>
       </Link>
 
-      <Link href="/Perfil" asChild>
+      <Link href="/ProfileScreen" asChild>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons
-            name={pathname === "/Perfil" ? "person" : "person-outline"}
+            name={pathname === "/ProfileScreen" ? "person" : "person-outline"}
             size={24}
             color="#F7F7F7"
           />
           <Text
             style={[
               styles.navLabel,
-              pathname === "/Perfil" && { color: "#F7F7F7" },
+              pathname === "/ProfileScreen" && { color: "#F7F7F7" },
             ]}
           >
             profile
@@ -91,7 +93,6 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 10,
     backgroundColor: "#000000",
-    
   },
   navItem: {
     alignItems: "center",

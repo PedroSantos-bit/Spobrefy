@@ -1,5 +1,3 @@
-// C:\Users\jonat\Projetos_web\Spobrefy-main\Spobrefy\app\+not-found.js
-
 import { Stack, Link } from 'expo-router';
 import { StyleSheet, View, Text } from 'react-native';
 

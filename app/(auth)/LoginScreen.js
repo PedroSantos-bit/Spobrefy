@@ -8,6 +8,7 @@ import {
   Image,
   TextInput,
 } from "react-native";
+import React from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
@@ -33,7 +34,7 @@ function LoginScreen() {
       const userCredential = await signInUser(login, password); // Chama a função reutilizável
       console.log('Usuário logado com sucesso:', userCredential.user);
       Alert.alert("Sucesso", "Login realizado!");
-      router.replace('../(Pages)/HomeScreen'); // NAVEGAÇÃO APÓS LOGIN BEM-SUCEDIDO
+      router.replace('/HomeScreen'); // NAVEGAÇÃO APÓS LOGIN BEM-SUCEDIDO
     }  catch (error) {
       // As mensagens de erro já vêm da função signInUser
       Alert.alert("Erro de Login", error.message);
@@ -52,7 +53,7 @@ function LoginScreen() {
       const { authentication } = response;
       Alert.alert("Login realizado!", `Token: ${authentication.accessToken}`);
       console.log(authentication);
-      router.replace('../(Pages)/HomeScreen'); // NAVEGAÇÃO APÓS LOGIN BEM-SUCEDIDO
+      router.replace('/HomeScreen'); // NAVEGAÇÃO APÓS LOGIN BEM-SUCEDIDO
     }
   }, [response]);
 
@@ -125,7 +126,7 @@ function LoginScreen() {
         <View style={{ marginTop: 40 }}>
           <TouchableOpacity>
             <Link
-              href={"./RedefinirScreen"}
+              href={"/RedefinirScreen"}
               style={{
                 borderBottomWidth: 0.8,
                 borderBottomColor: "white",
@@ -139,7 +140,7 @@ function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity style={{ marginTop: 20 }}>
-            <Link href={"./CadastroScreen"}>
+            <Link href={"/CadastroScreen"}>
               <Text style={styles.textButtonRestauPass}>
                 Não tem uma conta? C͟a͟d͟a͟s͟t͟r͟e͟-s͟e͟
               </Text>

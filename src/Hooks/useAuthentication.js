@@ -1,28 +1,32 @@
+// src/hooks/useAuthentication.js
 import { useState, useEffect } from 'react';
-import auth from '@react-native-firebase/auth'; // instância de autenticação do Firebase
-import { SplashScreen } from 'expo-router'; // SplashScreen do expo-router
+import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+// import { SplashScreen } from 'expo-router'; // Removido daqui, RootLayout controla
 
 export const useAuthentication = () => {
-  const [user, setUser] = useState(null); // Estado para armazenar o usuário logado
-  const [isLoading, setIsLoading] = useState(true); // Estado para indicar se o carregamento inicial da autenticação está completo
+  console.log("useAuthentication: HOOK INICIALIZADO / RE-RENDERIZADO");
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(() => {
+    console.log("useAuthentication: useState de isLoading definindo para TRUE inicialmente");
+    return true;
+  });
 
   useEffect(() => {
-
-    // Este observador é chamado sempre que o estado de login do usuário muda (login, logout, etc.)
-    const unsubscribe = auth().onAuthStateChanged(firebaseUser => {
-      setUser(firebaseUser); // Atualiza o estado do usuário
-      setIsLoading(false);    // Indica que o carregamento inicial do estado de autenticação terminou
-      // Esconde a tela de splash
-      SplashScreen.hideAsync();
+    console.log("useAuthentication: useEffect EXECUTADO");
+    const authInstance = getAuth();
+    const unsubscribe = onAuthStateChanged(authInstance, (firebaseUser) => {
+      console.log("useAuthentication: onAuthStateChanged disparado. User:", firebaseUser ? firebaseUser.uid : null);
+      setUser(firebaseUser);
+      console.log("useAuthentication: onAuthStateChanged definindo isLoading para FALSE");
+      setIsLoading(false);
     });
 
-    // Retorna uma função de limpeza para cancelar a inscrição
-    return () => unsubscribe();
-  }, []); // O array vazio garante que useEffect rode apenas uma vez 
+    return () => {
+      console.log("useAuthentication: useEffect LIMPEZA (unsubscribe)");
+      unsubscribe();
+    };
+  }, []); // Array de dependências vazio
 
-  // Retorna o estado do usuário e o status de carregamento
-  return {
-    user,
-    isLoading
-  };
+  console.log("useAuthentication: RETORNANDO DO HOOK. isLoading:", isLoading, "User:", user ? user.uid : null);
+  return { user, isLoading };
 };

@@ -1,35 +1,62 @@
-import { Stack, Redirect, SplashScreen } from "expo-router";
-//import auth from '@react-native-firebase/auth'; // Necessário para o hook useAuthentication
-import "../src/Firebase/Firebase"; // Este import executa o código de inicialização do Firebase
+// app/_layout.js
+import { Stack, SplashScreen, useRouter, useSegments } from "expo-router";
+import { useEffect } from "react";
+import "../src/firebase/firebase";
+import { useAuthentication } from "../src/hooks/useAuthentication";
 
 SplashScreen.preventAutoHideAsync();
 
-import { useAuthentication } from "../src/Hooks/useAuthentication"; // <--- Importe hook de autentificação
-
 export default function RootLayout() {
-  const { user, isLoading } = useAuthentication(); // obter o estado do usuário e o status de carregamento
+  const { user, isLoading } = useAuthentication();
+  const router = useRouter(); // Hook para navegação imperativa
+  const segments = useSegments(); // Hook para obter os segmentos da rota atual
 
-  // Enquanto o estado de autenticação está sendo determinado, não renderize nada
+  console.log("RootLayout -> isLoading:", isLoading, "User:", user ? user.uid : null, "Segments:", segments.join('/'));
+
+  useEffect(() => {
+    console.log("RootLayout useEffect -> Entrou. isLoading:", isLoading, "User:", !!user);
+    if (isLoading) {
+      console.log("RootLayout useEffect -> Ainda carregando, sem ação de redirect.");
+      return; // Não faça nada até que o carregamento da autenticação termine
+    }
+
+    const inAuthGroup = segments[0] === '(auth)'; // Verifica se a rota atual está dentro do grupo (auth)
+
+    if (!user && !inAuthGroup) {
+      // Se NÃO há usuário E NÃO estamos no grupo de autenticação (ex: /LoginScreen )
+      // então redireciona para a tela de login/autenticação.
+      const authRoute = "/(auth)/LoginScreen"; 
+      console.log(`RootLayout useEffect -> Usuário NÃO logado e NÃO está no grupo auth. Redirecionando para ${authRoute}`);
+      router.replace(authRoute); 
+    } else if (user && inAuthGroup) {
+      // Se HÁ usuário E estamos no grupo de autenticação (ex: acabou de logar)
+      // então redireciona para a tela principal do app.
+      const homeRoute = "/(pages)/HomeScreen"; 
+      console.log(`RootLayout useEffect -> Usuário LOGADO e ESTAVA no grupo auth. Redirecionando para ${homeRoute}`);
+      router.replace(homeRoute);
+    } else {
+      console.log("RootLayout useEffect -> Nenhuma condição de redirect imediato atendida ou já está na tela correta.");
+    }
+
+    SplashScreen.hideAsync();
+
+  }, [isLoading, user, segments, router]); // Dependências do useEffect
+
+
   if (isLoading) {
+    console.log("RootLayout render -> isLoading é true, retornando null.");
     return null;
   }
 
-  // Lógica de Redirecionamento:
-  // Se o usuário NÃO estiver logado, redirecione-o para a rota de login dentro do grupo (auth)
-  if (!user) {
-    return <Redirect href="/LoginScreen" />;
-  }
-
-  // Se o usuário ESTIVER logado (e isLoading for false), renderize o Stack principal
+  // Se não estiver carregando, mas o useEffect ainda não redirecionou (ou não precisa),
+  // renderiza o Stack. O SplashScreen.hideAsync() é chamado no useEffect.
+  // Se isLoading for false e o useEffect já tiver redirecionado, esta renderização
+  // será da nova rota.
+  console.log("RootLayout -> Renderizando Stack. isLoading é false.");
   return (
-    <Stack>
-      {/* Define a tela para o grupo de navegação principal.*/}
-      <Stack.Screen name="(pages)" options={{ headerShown: false }} />
-
-      {/* Define a tela para o grupo de autenticação.*/}
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-
-      {/* para rotas que não correspondem a nada */}
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="(pages)" />
       <Stack.Screen name="+not-found" />
     </Stack>
   );

@@ -7,6 +7,7 @@ import {
   Image,
   Alert,
 } from "react-native";
+import React from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";

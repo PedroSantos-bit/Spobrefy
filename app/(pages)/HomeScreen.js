@@ -156,7 +156,7 @@ const HomeScreen = () => {
             style={styles.playerImage}
           />
           <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
-            <Link href="/Musica">
+            <Link href="/MusicScreen">
               <View>
                 <Text style={styles.playerTitle}>Inside Out</Text>
                 <Text style={styles.playerSubtitle}>
