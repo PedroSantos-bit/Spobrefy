@@ -16,19 +16,19 @@ const AlbumCard = ({ title, image }) => (
 
 const styles = StyleSheet.create({
     container: {
-        width: 120, 
+        width: 140, 
         marginRight: 16,
     },
     image: {
         width: "100%",
-        height: 120, 
+        height: 140, 
         borderRadius: 8,
     },
     playButton: {
         position: 'absolute',
-        top: 75,
+        top: 95,
         //left: 45,
-        right: 180 / 2 - 10,
+        right: 210 / 2 - 10,
         backgroundColor: '#FFFFFF',
         borderRadius: 20,
         padding: 5,

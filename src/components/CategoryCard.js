@@ -13,12 +13,12 @@ const CategoryCard = ({ title, image }) => (
 
 const styles = StyleSheet.create({
     card: {
-        width: 250,
-        height: 240,
+        width: 270,
+        height: 270,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
-        backgroundColor: "black", //testando 
+        margin: 40,
+        //backgroundColor: "black", //testando 
         borderRadius: 20,
     },
     text: {

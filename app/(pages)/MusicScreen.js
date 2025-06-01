@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Audio } from "expo-av";
 import ScreenMain from "../../src/Utils/ScreenMain";
 import { StyleSheet, View } from "react-native";
-import { trackData } from "../../Data/MusicData";
+import { trackData } from "../../src/Data/MusicData";
 import { LinearGradient } from "expo-linear-gradient";
 
 const MusicScreen = () => {

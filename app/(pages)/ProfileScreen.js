@@ -8,13 +8,18 @@ import {
   TouchableOpacity,
   View,
   Image,
+  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { useRouter } from "expo-router";
+import { signOutUser } from "../../src/Utils/AuthOperations";
+import auth from "@react-native-firebase/auth";
 
 export default function ProfileScreen() {
   const [image, setImage] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
+  const router = useRouter();
 
   // Algumas imagens de avatar prontas
   const imageOptions = [
@@ -53,6 +58,78 @@ export default function ProfileScreen() {
       setImage(result.assets[0].uri);
     }
   }
+
+  // --- FUNÇÃO PARA SAIR (LOGOUT) ---
+  const handleSignOut = async () => {
+    Alert.alert(
+      "Sair da conta",
+      "Tem certeza que deseja sair da sua conta?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Sair",
+          onPress: async () => {
+            try {
+              await signOutUser(); // Chama a função de logout do authOperations.js
+              Alert.alert("Sucesso", "Você foi desconectado.");
+              router.replace("/LoginScreen"); // Redireciona para a tela de login
+            } catch (error) {
+              Alert.alert("Erro", "Não foi possível sair: " + error.message);
+              console.error("Erro ao sair:", error);
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
+  // --- FUNÇÃO PARA EXCLUIR CONTA ---
+  const handleDeleteAccount = async () => {
+    Alert.alert(
+      "Excluir Conta",
+      "Esta ação é irreversível. Tem certeza que deseja EXCLUIR sua conta?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Excluir",
+          onPress: async () => {
+            try {
+              const currentUser = auth().currentUser;
+              if (currentUser) {
+                await currentUser.delete(); // Exclui o usuário logado
+                Alert.alert("Sucesso", "Sua conta foi excluída.");
+                router.replace("/LoginScreen"); // Redireciona para a tela de login
+              } else {
+                Alert.alert("Erro", "Nenhum usuário logado para excluir.");
+              }
+            } catch (error) {
+              if (error.code === "auth/requires-recent-login") {
+                Alert.alert(
+                  "Erro de Segurança",
+                  "Para excluir sua conta, por favor, faça login novamente para confirmar sua identidade."
+                );
+                router.replace("/LoginScreen");
+              } else {
+                Alert.alert(
+                  "Erro",
+                  "Não foi possível excluir a conta: " + error.message
+                );
+                console.error("Erro ao excluir conta:", error);
+              }
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
 
   return (
     <ScreenMain
@@ -134,16 +211,18 @@ export default function ProfileScreen() {
         </View>
 
         {/* Botões */}
-        <TouchableOpacity style={styles.buttonDelete}>
-          <Link href="/Login">
-            <Text style={styles.buttonText}>Excluir conta</Text>
-          </Link>
+        <TouchableOpacity
+          style={styles.buttonDelete}
+          onPress={handleDeleteAccount} // Chama a função de excluir conta
+        >
+          <Text style={styles.buttonText}>Excluir conta</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonExit}>
-          <Link href="/Login">
-            <Text style={styles.buttonText}>Sair</Text>
-          </Link>
+        <TouchableOpacity
+          style={styles.buttonExit}
+          onPress={handleSignOut} // Chama a função de sair
+        >
+          <Text style={styles.buttonText}>Sair</Text>
         </TouchableOpacity>
       </View>
     </ScreenMain>
@@ -172,7 +251,7 @@ const styles = StyleSheet.create({
   editIcon: {
     position: "absolute",
     bottom: 0,
-    right: 240 / 1 - 10, //controla a posição da camera
+    right: 340 / 1 - 10, //controla a posição da camera
     backgroundColor: "#FFFFFF",
     borderRadius: 20,
     padding: 5,

@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import ArtistCircle from "../../src/components/ArtistCircle";
 import AlbumCard from "../../src/components/AlbumCard";
 import CategoryCard from "../../src/components/CategoryCard";
-import ArtistCircle from "../../src/components/ArtistCircle";
 import ScreenMain from "../../src/Utils/ScreenMain";
 import Icon from "react-native-vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
@@ -152,15 +152,15 @@ const HomeScreen = () => {
         {/* Barra do player fixa */}
         <BlurView intensity={50} tint="dark" style={styles.miniPlayer}>
           <Image
-            source={require("../../src/Img/favicon.png")}
+            source={require("../../src/Img/Akon.jpg")}
             style={styles.playerImage}
           />
           <TouchableOpacity onPress={togglePlayer} style={styles.Music}>
             <Link href="/MusicScreen">
               <View>
-                <Text style={styles.playerTitle}>Inside Out</Text>
+                <Text style={styles.playerTitle}>Right Now (Na Na Na)</Text>
                 <Text style={styles.playerSubtitle}>
-                  The Chainsmokers, Charlee
+                  Akon
                 </Text>
               </View>
             </Link>
@@ -229,8 +229,8 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   playerImage: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 4,
     marginRight: 15,
   },
